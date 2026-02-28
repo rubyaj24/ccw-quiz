@@ -14,6 +14,7 @@ export default function Home() {
 
   const [quizState, setQuizState] = useState<QuizState>("select");
   const [selectedTopic, setSelectedTopic] = useState<Topic | null>(null);
+  const [topicQuestions, setTopicQuestions] = useState<QuizQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
   const [checkedQuestions, setCheckedQuestions] = useState<Record<string, boolean>>({});
@@ -56,9 +57,16 @@ export default function Home() {
     };
   }, []);
 
-  const topicQuestions = selectedTopic
-    ? questions.filter((question) => question.topic === selectedTopic)
-    : [];
+  const shuffleQuestions = (items: QuizQuestion[]) => {
+    const shuffled = [...items];
+
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+
+    return shuffled;
+  };
 
   const topicQuestionCounts = questions.reduce(
     (counts, question) => {
@@ -89,7 +97,10 @@ export default function Home() {
   }, 0);
 
   const startQuiz = (topic: Topic) => {
+    const filteredTopicQuestions = questions.filter((question) => question.topic === topic);
+
     setSelectedTopic(topic);
+    setTopicQuestions(shuffleQuestions(filteredTopicQuestions));
     setCurrentIndex(0);
     setSelectedAnswers({});
     setCheckedQuestions({});
@@ -119,6 +130,7 @@ export default function Home() {
   const resetQuiz = () => {
     setQuizState("select");
     setSelectedTopic(null);
+    setTopicQuestions([]);
     setCurrentIndex(0);
     setSelectedAnswers({});
     setCheckedQuestions({});
@@ -329,17 +341,13 @@ export default function Home() {
                     !shouldRevealCurrentReview && isSelected
                       ? "border-foreground bg-foreground text-background"
                       : shouldRevealCurrentReview && isCorrectOption
-                        ? "border-foreground bg-foreground text-background"
+                        ? "border-green-500 text-green-600 ring-2 ring-green-500 bg-green-500/10 dark:text-green-300 dark:ring-green-400 dark:border-green-400"
+                        : shouldRevealCurrentReview && isSelected && !isCorrectOption
+                          ? "border-red-500 text-red-600 ring-2 ring-red-500 bg-red-500/10 dark:text-red-300 dark:ring-red-400 dark:border-red-400"
                         : "border-foreground/20"
                   }`}
                 >
                   {option}
-                  {shouldRevealCurrentReview && isCorrectOption && (
-                    <span className="ml-2 text-xs font-medium">(Correct)</span>
-                  )}
-                  {shouldRevealCurrentReview && isSelected && !isCorrectOption && (
-                    <span className="ml-2 text-xs font-medium">(Your choice)</span>
-                  )}
                 </button>
               );
             })}
@@ -354,7 +362,7 @@ export default function Home() {
                 Your answer: {currentQuestion.options[currentSelectedAnswer as number]}
               </p>
               <p className="text-sm">Correct answer: {currentQuestion.options[currentQuestion.answerIndex]}</p>
-              <p className="mt-2 text-sm opacity-90">Explanation: {currentQuestion.explanation}</p>
+              <p className="mt-2 text-md opacity-90">Explanation: <span className="text-sm font-medium">{currentQuestion.explanation}</span></p>
               <p className="mt-2 text-sm font-medium">References</p>
               <ul className="mt-1 space-y-1 text-sm">
                 {currentQuestion.references.map((reference) => (
