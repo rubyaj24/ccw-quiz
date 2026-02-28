@@ -23,4 +23,37 @@ export { coreQuestions } from "./quiz-data/core";
 export { dsQuestions } from "./quiz-data/ds";
 export { oopQuestions } from "./quiz-data/oop";
 export { osQuestions } from "./quiz-data/os";
+export {
+	EXAM_DEFAULTS,
+	allTopics,
+	buildExamResult,
+	computeTopicQuestionCounts,
+	createExamConfig,
+	emptyResponses,
+	generateExamSession,
+	isExamExpired,
+	normalizeResponsesForSession,
+	selectExamAnswer,
+	shouldAutoSubmit,
+	shuffleArray,
+	createSeededRandom,
+} from "./exam-mode";
+export {
+	deserializeQuestionRepeatState,
+	emptyQuestionRepeatState,
+	getActiveExcludedQuestionIds,
+	markQuestionsWithCooldown,
+	pruneExpiredQuestionRepeats,
+	serializeQuestionRepeatState,
+} from "./question-repeat-guard";
 export type { QuizQuestion, Topic } from "./quiz-data/types";
+export type {
+	ExamConfig,
+	ExamQuestion,
+	ExamResponses,
+	ExamResult,
+	ExamSession,
+	RandomGenerator,
+	TopicWeightage,
+} from "./exam-mode";
+export type { QuestionRepeatState } from "./question-repeat-guard";

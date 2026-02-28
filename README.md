@@ -11,6 +11,9 @@ Practice and review key computer science domains:
 ## Features
 
 - Topic-wise quiz flow with dynamic question counts
+- Exam mode with weighted topics, timer, and auto-submit
+- Server-side exam sessions (answers never shipped to client)
+- No-repeat cooldown to avoid recent questions in exams
 - Two review modes:
 	- **Show after Check**
 	- **Instant reveal**
@@ -41,12 +44,20 @@ app/
 	globals.css
 	lib/
 		index.ts
+		exam-mode.ts
+		exam-api.ts
+		question-repeat-guard.ts
 		quiz-data/
 			types.ts
 			oop.ts
 			os.ts
 			ds.ts
 			core.ts
+	api/
+		exam/
+			session-store.ts
+			start/route.ts
+			submit/route.ts
 ```
 
 ## Getting Started
@@ -86,6 +97,81 @@ Open [http://localhost:3000](http://localhost:3000).
 - `npm run start` - run production server
 - `npm run lint` - run ESLint
 
+## Exam Mode (Server-Side)
+
+Exam sessions are generated and scored on the server to prevent answer leakage.
+
+### Start Exam
+
+`POST /api/exam/start`
+
+Body:
+
+```json
+{
+	"config": {
+		"totalQuestions": 100,
+		"timeLimitMinutes": 120
+	},
+	"excludeQuestionIds": ["oop-1", "os-3"]
+}
+```
+
+Response:
+
+```json
+{
+	"sessionId": "...",
+	"config": {
+		"totalQuestions": 100,
+		"timeLimitMinutes": 120,
+		"topics": ["oop", "os", "ds", "core"],
+		"topicWeightage": { "os": 30, "ds": 30, "oop": 25, "core": 15 }
+	},
+	"questions": [{ "id": "...", "topic": "oop", "prompt": "...", "options": ["..."] }],
+	"startedAtEpochMs": 0,
+	"expiresAtEpochMs": 0
+}
+```
+
+### Submit Exam
+
+`POST /api/exam/submit`
+
+Body:
+
+```json
+{
+	"sessionId": "...",
+	"responses": { "oop-1": 2, "ds-5": 1 },
+	"submittedAtEpochMs": 0
+}
+```
+
+Response:
+
+```json
+{
+	"result": {
+		"totalQuestions": 100,
+		"correct": 72,
+		"incorrect": 28,
+		"scorePercentage": 72,
+		"topicWiseAccuracy": {
+			"oop": 70,
+			"os": 75,
+			"ds": 68,
+			"core": 80
+		},
+		"timeTakenMinutes": 98.5
+	}
+}
+```
+
+### No-Repeat Cooldown
+
+Exam mode excludes questions used recently for the selected cooldown window. This is tracked client-side in `localStorage` and applied when starting a new exam session.
+
 ## How to Add Questions
 
 Questions are organized by domain under `app/lib/quiz-data/`.
@@ -115,6 +201,11 @@ npm run lint
 
 - Star count is fetched from GitHub API client-side.
 - If GitHub rate-limits the request, UI gracefully shows a loading/fallback state.
+- Practice mode still reads the full question bank client-side. If you need full security, move practice mode to server endpoints too.
+
+## Security Note
+
+Client-side exams cannot fully hide answers because the browser can always inspect bundled code. For higher-stakes use cases, this project ships **exam sessions and scoring from the server** so `answerIndex` never reaches the client during the exam. If you need full integrity, move all quiz flows (including practice mode) behind server endpoints.
 
 ## Contributing
 
