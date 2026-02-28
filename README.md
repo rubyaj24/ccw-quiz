@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CCW Quiz Platform
+
+A modern quiz platform for **Comprehensive Course Work (CCW)** topics, built with Next.js and Tailwind CSS.
+
+Practice and review key computer science domains:
+- Object-Oriented Programming (OOP)
+- Operating Systems (OS)
+- Data Structures (DS)
+- Core CS topics
+
+## Features
+
+- Topic-wise quiz flow with dynamic question counts
+- Two review modes:
+	- **Show after Check**
+	- **Instant reveal**
+- Per-question feedback:
+	- selected answer
+	- correct answer
+	- explanation
+	- references
+- End-of-quiz score summary + full review cards
+- Raise question correctness issues from the UI
+- Send issue reports directly to WhatsApp
+- Live GitHub star count in footer
+- Domain-separated question bank for easy maintenance
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Fonts:** `next/font` (Geist, Geist Mono, Dancing Script, Nunito)
+
+## Project Structure
+
+```text
+app/
+	layout.tsx
+	page.tsx
+	globals.css
+	lib/
+		index.ts
+		quiz-data/
+			types.ts
+			oop.ts
+			os.ts
+			ds.ts
+			core.ts
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Configure environment variables
+
+Create `.env.local` from `.env.example`:
+
+```bash
+cp .env.example .env.local
+```
+
+Set your WhatsApp number (digits only, with country code):
+
+```env
+NEXT_PUBLIC_WHATSAPP_NUMBER=91XXXXXXXXXX
+```
+
+### 3) Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - start local dev server
+- `npm run build` - create production build
+- `npm run start` - run production server
+- `npm run lint` - run ESLint
 
-## Learn More
+## How to Add Questions
 
-To learn more about Next.js, take a look at the following resources:
+Questions are organized by domain under `app/lib/quiz-data/`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Pick the correct file (`oop.ts`, `os.ts`, `ds.ts`, `core.ts`)
+2. Add a `QuizQuestion` object with:
+	 - `id` (unique)
+	 - `topic`
+	 - `prompt`
+	 - `options`
+	 - `answerIndex`
+	 - `explanation`
+	 - `references` (`label`, `url`)
+3. Run:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+```
 
-## Deploy on Vercel
+## Issue Reporting Flow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Users can click **Raise correctness issue** on a reviewed question.
+- Submission opens WhatsApp with a prefilled issue template.
+- Includes question ID, prompt, selected answer, correct answer, and issue note.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+
+- Star count is fetched from GitHub API client-side.
+- If GitHub rate-limits the request, UI gracefully shows a loading/fallback state.
+
+## Contributing
+
+Contributions are welcome.
+
+- Use the **Contribute** and **Report Issue** links in the app footer, or
+- Open PRs/issues directly in this repository.
+
+## License
+
+Add your preferred license in this repository (e.g., MIT) if you want to make usage terms explicit.
