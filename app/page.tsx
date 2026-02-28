@@ -235,7 +235,7 @@ export default function Home() {
   };
 
   return (
-    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10">
+    <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-10 lg:justify-center">
       <header className="mb-8 rounded-2xl border border-foreground/20 bg-background/80 p-6 sm:p-8">
         <div className="inline-flex items-center rounded-full border border-foreground/20 px-3 py-1 text-xs tracking-wide font-nunito font-medium">
           COMPREHENSIVE COURSE WORK
