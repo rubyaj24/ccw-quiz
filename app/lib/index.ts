@@ -1,8 +1,3 @@
-import { coreQuestions } from "./quiz-data/core";
-import { dsQuestions } from "./quiz-data/ds";
-import { oopQuestions } from "./quiz-data/oop";
-import { osQuestions } from "./quiz-data/os";
-
 import type { Topic } from "./quiz-data/types";
 
 export const topicLabels: Record<Topic, string> = {
@@ -10,19 +5,17 @@ export const topicLabels: Record<Topic, string> = {
 	os: "Operating Systems",
 	ds: "Data Structures",
 	core: "Core Computer Topics",
+	maths: "Mathematics",
+	vectors: "Vector Calculus",
+	matrices: "Matrices & Determinants",
+	differential: "Differential Equations",
+	discrete: "Discrete Mathematics",
+	graphics: "Engineering Graphics",
 };
 
-export const questions = [
-	...oopQuestions,
-	...osQuestions,
-	...dsQuestions,
-	...coreQuestions,
-];
-
-export { coreQuestions } from "./quiz-data/core";
-export { dsQuestions } from "./quiz-data/ds";
-export { oopQuestions } from "./quiz-data/oop";
-export { osQuestions } from "./quiz-data/os";
+export { topicQuestionCounts, totalQuestions, loadQuestionsForTopic } from "./question-loader";
+export { MathInline, MathBlock, MathRenderer } from "../components/math";
+export { vec, magnitude, matrix, determinant, curl, divergence, gradient, laplacian, partial, integral, frac, sqrt, sum, prod, binom, set, setBuilder, forall, exists, implies, iff, neg, land, lor, therefore, alpha, beta, gamma, delta, pi, sigma, theta, lambda, phi, omega, infinity, nabla, partialSymbol, emptyset, element, union, intersect, subset, subseteq, cases, text } from "./math-latex";
 export {
 	EXAM_DEFAULTS,
 	allTopics,

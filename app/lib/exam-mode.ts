@@ -37,19 +37,51 @@ export type ExamResponses = Record<string, number | undefined>;
 
 export type RandomGenerator = () => number;
 
-const ALL_TOPICS: Topic[] = ["oop", "os", "ds", "core"];
+const ALL_TOPICS: Topic[] = ["oop", "os", "ds", "core", "maths", "vectors", "matrices", "differential", "discrete", "graphics"];
 
 export const EXAM_DEFAULTS: ExamConfig = {
   totalQuestions: 100,
   timeLimitMinutes: 120,
   topics: ["oop", "os", "ds", "core"],
   topicWeightage: {
+    oop: 25,
     os: 30,
     ds: 30,
-    oop: 25,
     core: 15,
+    maths: 0,
+    vectors: 0,
+    matrices: 0,
+    differential: 0,
+    discrete: 0,
+    graphics: 0,
   },
 };
+
+const emptyTopicRecord = (): Record<Topic, number> => ({
+  oop: 0,
+  os: 0,
+  ds: 0,
+  core: 0,
+  maths: 0,
+  vectors: 0,
+  matrices: 0,
+  differential: 0,
+  discrete: 0,
+  graphics: 0,
+});
+
+const emptyQuestionArrayRecord = (): Record<Topic, QuizQuestion[]> => ({
+  oop: [],
+  os: [],
+  ds: [],
+  core: [],
+  maths: [],
+  vectors: [],
+  matrices: [],
+  differential: [],
+  discrete: [],
+  graphics: [],
+});
 
 export const createSeededRandom = (seed: number): RandomGenerator => {
   let state = seed >>> 0;
@@ -103,12 +135,7 @@ export const computeTopicQuestionCounts = (config: ExamConfig): Record<Topic, nu
     throw new Error("Active topic weightage must be greater than 0.");
   }
 
-  const counts: Record<Topic, number> = {
-    oop: 0,
-    os: 0,
-    ds: 0,
-    core: 0,
-  };
+  const counts = emptyTopicRecord();
 
   const fractions = config.topics.map((topic, topicOrder) => {
     const rawCount = (config.totalQuestions * Math.max(0, config.topicWeightage[topic])) / activeWeight;
@@ -209,12 +236,7 @@ export const generateExamSession = (
   );
   const requestedCounts = computeTopicQuestionCounts(config);
 
-  const questionsByTopic: Record<Topic, QuizQuestion[]> = {
-    oop: [],
-    os: [],
-    ds: [],
-    core: [],
-  };
+  const questionsByTopic = emptyQuestionArrayRecord();
 
   for (const question of filteredByTopic) {
     questionsByTopic[question.topic].push(question);
@@ -318,19 +340,8 @@ export const buildExamResult = (
   const totalQuestions = session.questions.length;
   let correct = 0;
 
-  const topicTotals: Record<Topic, number> = {
-    oop: 0,
-    os: 0,
-    ds: 0,
-    core: 0,
-  };
-
-  const topicCorrect: Record<Topic, number> = {
-    oop: 0,
-    os: 0,
-    ds: 0,
-    core: 0,
-  };
+  const topicTotals = emptyTopicRecord();
+  const topicCorrect = emptyTopicRecord();
 
   for (const question of session.questions) {
     topicTotals[question.topic] += 1;
@@ -349,12 +360,10 @@ export const buildExamResult = (
   const maxAllowedMs = session.config.timeLimitMinutes * 60_000;
   const boundedElapsedMs = Math.min(elapsedMs, maxAllowedMs);
 
-  const topicWiseAccuracy: Record<Topic, number> = {
-    oop: toPercentage(topicCorrect.oop, topicTotals.oop),
-    os: toPercentage(topicCorrect.os, topicTotals.os),
-    ds: toPercentage(topicCorrect.ds, topicTotals.ds),
-    core: toPercentage(topicCorrect.core, topicTotals.core),
-  };
+  const topicWiseAccuracy = emptyTopicRecord();
+  for (const topic of ALL_TOPICS) {
+    topicWiseAccuracy[topic] = toPercentage(topicCorrect[topic], topicTotals[topic]);
+  }
 
   return {
     totalQuestions,

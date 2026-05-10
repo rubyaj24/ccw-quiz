@@ -1013,4 +1013,499 @@ export const dsQuestions: QuizQuestion[] = [
             { label: "Topological Sorting", url: "https://en.wikipedia.org/wiki/Topological_sorting" },
         ],
     },
+    {
+        id: "ds-101",
+        topic: "ds",
+        prompt: "The total number of children of a node in a tree is known as its:",
+        options: ["Height", "Scale", "Degree", "Depth"],
+        answerIndex: 2,
+        explanation:
+            "The degree of a node is defined as the total number of children (subtrees) it has.",
+        references: [
+            { label: "Wikipedia: Tree (Data Structure)", url: "https://en.wikipedia.org/wiki/Tree_(data_structure)" },
+        ],
+    },
+    {
+        id: "ds-102",
+        topic: "ds",
+        prompt: "Which data structure is required to convert infix notation to prefix notation?",
+        options: ["Stack", "Linked List", "Binary Tree", "Queue"],
+        answerIndex: 0,
+        explanation:
+            "A stack is used to hold operators during infix-to-prefix conversion, processing the expression from right to left.",
+        references: [
+            { label: "Wikipedia: Stack (Data Structure)", url: "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)" },
+        ],
+    },
+    {
+        id: "ds-103",
+        topic: "ds",
+        prompt: "Which of the following correctly initializes an array in C?",
+        options: ["int arr[2]=(10,20)", "int arr(2)=(10,20)", "int arr[2]={10,20}", "int arr(2)={10,20}"],
+        answerIndex: 2,
+        explanation:
+            "In C, arrays are declared with square brackets and initialized using curly braces: int arr[2]={10,20};",
+        references: [
+            { label: "Wikipedia: Array Data Structure", url: "https://en.wikipedia.org/wiki/Array_data_structure" },
+        ],
+    },
+    {
+        id: "ds-104",
+        topic: "ds",
+        prompt: "Which of the following is a non-linear data structure?",
+        options: ["Trees", "Stacks", "Strings", "Queues"],
+        answerIndex: 0,
+        explanation:
+            "Trees are non-linear because elements are arranged hierarchically rather than sequentially.",
+        references: [
+            { label: "Wikipedia: Tree (Data Structure)", url: "https://en.wikipedia.org/wiki/Tree_(data_structure)" },
+        ],
+    },
+    {
+        id: "ds-105",
+        topic: "ds",
+        prompt: "What is the prefix form of the expression A+B*C?",
+        options: ["A+(BC*)", "+AB*C", "ABC+*", "+A*BC"],
+        answerIndex: 3,
+        explanation:
+            "Applying standard operator precedence (* before +), A+B*C converts to prefix as +A*BC.",
+        references: [
+            { label: "Wikipedia: Polish Notation", url: "https://en.wikipedia.org/wiki/Polish_notation" },
+        ],
+    },
+    {
+        id: "ds-106",
+        topic: "ds",
+        prompt: "What is the asymptotic time complexity of: for i=1 to n { for j=1 to i { print } }?",
+        options: ["O(n²)", "O(n log n)", "O(n³)", "O(n)"],
+        answerIndex: 0,
+        explanation:
+            "The total iterations are 1+2+...+n = n(n+1)/2, which is O(n²).",
+        references: [
+            { label: "Wikipedia: Big O Notation", url: "https://en.wikipedia.org/wiki/Big_O_notation" },
+        ],
+    },
+    {
+        id: "ds-107",
+        topic: "ds",
+        prompt: "Using the division method with a hash table of size 157, at which position is key 172 placed?",
+        options: ["19", "72", "15", "17"],
+        answerIndex: 2,
+        explanation:
+            "172 mod 157 = 15. The division-method hash function h(k) = k mod m places key 172 at index 15.",
+        references: [
+            { label: "Wikipedia: Hash Function", url: "https://en.wikipedia.org/wiki/Hash_function" },
+        ],
+    },
+    {
+        id: "ds-108",
+        topic: "ds",
+        prompt: "Which of the following is NOT a divide-and-conquer approach?",
+        options: ["Insertion Sort", "Merge Sort", "Shell Sort", "Heap Sort"],
+        answerIndex: 0,
+        explanation:
+            "Insertion sort is an incremental algorithm, not divide and conquer. Merge sort and heap sort follow divide-and-conquer.",
+        references: [
+            { label: "Wikipedia: Insertion Sort", url: "https://en.wikipedia.org/wiki/Insertion_sort" },
+        ],
+    },
+    {
+        id: "ds-109",
+        topic: "ds",
+        prompt: "A pile in which items are added at one end and removed from the other is called a:",
+        options: ["List", "Queue", "Stack", "Array"],
+        answerIndex: 1,
+        explanation:
+            "A queue follows FIFO: elements are enqueued at the rear and dequeued from the front.",
+        references: [
+            { label: "Wikipedia: Queue", url: "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)" },
+        ],
+    },
+    {
+        id: "ds-110",
+        topic: "ds",
+        prompt: "A linear collection of data elements where each node is linked by means of a pointer is called:",
+        options: ["Linked list", "Node list", "Primitive list", "Unordered list"],
+        answerIndex: 0,
+        explanation:
+            "A linked list stores elements in nodes connected via pointers rather than contiguous memory.",
+        references: [
+            { label: "Wikipedia: Linked List", url: "https://en.wikipedia.org/wiki/Linked_list" },
+        ],
+    },
+    {
+        id: "ds-111",
+        topic: "ds",
+        prompt: "Which of the following is NOT a disadvantage of arrays?",
+        options: ["Fixed size", "Possible memory wastage if usage is less than allocated size", "Position-based insertion", "Accessing elements at specified positions"],
+        answerIndex: 3,
+        explanation:
+            "Accessing elements by index is an advantage of arrays, not a disadvantage. Fixed size and memory wastage are disadvantages.",
+        references: [
+            { label: "Wikipedia: Array Data Structure", url: "https://en.wikipedia.org/wiki/Array_data_structure" },
+        ],
+    },
+    {
+        id: "ds-112",
+        topic: "ds",
+        prompt: "The postfix expression for the infix expression A+B*(C+D)/F+D*E is:",
+        options: ["AB+CD+*F/D+E*", "ABCD+*F/DE*++", "A*B+CD/F*DE++", "A+*BCD/F*DE++"],
+        answerIndex: 1,
+        explanation:
+            "Applying standard precedence and left-to-right associativity, A+B*(C+D)/F+D*E converts to ABCD+*F/DE*++.",
+        references: [
+            { label: "Wikipedia: Reverse Polish Notation", url: "https://en.wikipedia.org/wiki/Reverse_Polish_notation" },
+        ],
+    },
+    {
+        id: "ds-113",
+        topic: "ds",
+        prompt: "If a stack's capacity is 10 and we try to push an 11th element, the condition is called:",
+        options: ["Underflow", "Garbage collection", "Overflow", "None of the above"],
+        answerIndex: 2,
+        explanation:
+            "Stack overflow occurs when a push is attempted on a full stack.",
+        references: [
+            { label: "Wikipedia: Stack Overflow", url: "https://en.wikipedia.org/wiki/Stack_overflow" },
+        ],
+    },
+    {
+        id: "ds-114",
+        topic: "ds",
+        prompt: "Among the following tree structures, which is most efficient considering both space and time complexities?",
+        options: ["Incomplete binary tree", "Complete binary tree", "Full binary tree", "Degenerate tree"],
+        answerIndex: 1,
+        explanation:
+            "A complete binary tree is efficiently stored as an array and provides good time/space balance for heap operations.",
+        references: [
+            { label: "Wikipedia: Binary Tree", url: "https://en.wikipedia.org/wiki/Binary_tree" },
+        ],
+    },
+    {
+        id: "ds-115",
+        topic: "ds",
+        prompt: "What is the minimum number of fields required in each node of a doubly linked list?",
+        options: ["2", "3", "4", "None of the above"],
+        answerIndex: 1,
+        explanation:
+            "Each node in a doubly linked list requires 3 fields: data, a pointer to the next node, and a pointer to the previous node.",
+        references: [
+            { label: "Wikipedia: Doubly Linked List", url: "https://en.wikipedia.org/wiki/Doubly_linked_list" },
+        ],
+    },
+    {
+        id: "ds-116",
+        topic: "ds",
+        prompt: "If an array is already sorted, which algorithm exhibits the best performance?",
+        options: ["Merge Sort", "Insertion Sort", "Quick Sort", "Heap Sort"],
+        answerIndex: 1,
+        explanation:
+            "Insertion sort runs in O(n) on an already-sorted array because each element requires no shifting.",
+        references: [
+            { label: "Wikipedia: Insertion Sort", url: "https://en.wikipedia.org/wiki/Insertion_sort" },
+        ],
+    },
+    {
+        id: "ds-117",
+        topic: "ds",
+        prompt: "What is the output of: int arr[5]={10,20,30,40,50}; printf(\"%d\", arr[5]);",
+        options: ["Garbage value", "10", "50", "Compile error"],
+        answerIndex: 0,
+        explanation:
+            "arr[5] is out of bounds (valid indices are 0–4). Accessing it is undefined behavior, typically producing a garbage value.",
+        references: [
+            { label: "Wikipedia: Buffer Overflow", url: "https://en.wikipedia.org/wiki/Buffer_overflow" },
+        ],
+    },
+    {
+        id: "ds-118",
+        topic: "ds",
+        prompt: "Which of the following is NOT a standard operation that can be performed on a queue?",
+        options: ["Insertion", "Deletion", "Retrieval", "Traversal"],
+        answerIndex: 3,
+        explanation:
+            "Standard queue operations are enqueue (insert), dequeue (delete), and peek/retrieval. Traversal is not a standard queue operation.",
+        references: [
+            { label: "Wikipedia: Queue", url: "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)" },
+        ],
+    },
+    {
+        id: "ds-119",
+        topic: "ds",
+        prompt: "What is the primary reason for using a circular queue?",
+        options: ["Avoid wastage of memory", "Access the queue using priority", "Follow the FIFO principle", "None of the above"],
+        answerIndex: 0,
+        explanation:
+            "Circular queues reuse freed front slots, avoiding the wasted space seen in a standard linear queue.",
+        references: [
+            { label: "Wikipedia: Circular Buffer", url: "https://en.wikipedia.org/wiki/Circular_buffer" },
+        ],
+    },
+    {
+        id: "ds-120",
+        topic: "ds",
+        prompt: "Which of the following sorting algorithms is NOT stable?",
+        options: ["Bubble sort", "Quick sort", "Merge sort", "Insertion sort"],
+        answerIndex: 1,
+        explanation:
+            "Quick sort is not stable because partitioning can change the relative order of equal elements.",
+        references: [
+            { label: "Wikipedia: Sorting Algorithm Stability", url: "https://en.wikipedia.org/wiki/Sorting_algorithm#Stability" },
+        ],
+    },
+    {
+        id: "ds-121",
+        topic: "ds",
+        prompt: "Which method(s) can determine if there is a path between two vertices in a graph?",
+        options: ["Depth First Search only", "Breadth First Search only", "Both DFS and BFS", "Neither DFS nor BFS"],
+        answerIndex: 2,
+        explanation:
+            "Both DFS and BFS can determine reachability between any two vertices.",
+        references: [
+            { label: "Wikipedia: Graph Traversal", url: "https://en.wikipedia.org/wiki/Graph_traversal" },
+        ],
+    },
+    {
+        id: "ds-122",
+        topic: "ds",
+        prompt: "What is the time complexity of concatenating two doubly linked lists (without a tail pointer)?",
+        options: ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+        answerIndex: 2,
+        explanation:
+            "Without a tail pointer, we must traverse to the last node first, which takes O(n).",
+        references: [
+            { label: "Wikipedia: Doubly Linked List", url: "https://en.wikipedia.org/wiki/Doubly_linked_list" },
+        ],
+    },
+    {
+        id: "ds-123",
+        topic: "ds",
+        prompt: "Which of the following is FALSE about a doubly linked list?",
+        options: [
+            "We can navigate in both directions",
+            "It requires more space than a singly linked list",
+            "Insertion and deletion take a bit longer than in singly linked list",
+            "Implementing a doubly linked list is easier than a singly linked list",
+        ],
+        answerIndex: 3,
+        explanation:
+            "A doubly linked list is more complex to implement because the extra prev pointer must be maintained on every operation.",
+        references: [
+            { label: "Wikipedia: Doubly Linked List", url: "https://en.wikipedia.org/wiki/Doubly_linked_list" },
+        ],
+    },
+    {
+        id: "ds-124",
+        topic: "ds",
+        prompt: "Which data structure is optimal for solving the Tower of Hanoi problem?",
+        options: ["Queue", "Stack", "Heap", "Array"],
+        answerIndex: 1,
+        explanation:
+            "The Tower of Hanoi is a recursive problem that maps naturally to a stack.",
+        references: [
+            { label: "Wikipedia: Tower of Hanoi", url: "https://en.wikipedia.org/wiki/Tower_of_Hanoi" },
+        ],
+    },
+    {
+        id: "ds-125",
+        topic: "ds",
+        prompt: "Why are B+ trees preferred over binary trees in database systems?",
+        options: [
+            "Disk capacity is greater than memory capacity",
+            "Disk access is much slower than memory access",
+            "Disk data transfer rates are much less than memory transfer rates",
+            "Disks are more reliable than memory",
+        ],
+        answerIndex: 1,
+        explanation:
+            "B+ trees minimize disk accesses. Since disk I/O is orders of magnitude slower than memory access, fewer reads are crucial for database performance.",
+        references: [
+            { label: "Wikipedia: B+ Tree", url: "https://en.wikipedia.org/wiki/B%2B_tree" },
+        ],
+    },
+    {
+        id: "ds-126",
+        topic: "ds",
+        prompt: "In a min-heap, which statement is true about parent nodes relative to their children?",
+        options: [
+            "Parent nodes have values greater than or equal to their children",
+            "Parent nodes have values less than or equal to their children",
+            "Both statements are true",
+            "Both statements are false",
+        ],
+        answerIndex: 1,
+        explanation:
+            "In a min-heap every parent is less than or equal to its children, ensuring the minimum value is always at the root.",
+        references: [
+            { label: "Wikipedia: Heap Data Structure", url: "https://en.wikipedia.org/wiki/Heap_(data_structure)" },
+        ],
+    },
+    {
+        id: "ds-127",
+        topic: "ds",
+        prompt: "The postfix form of the expression (A+B)*(C*D−E)*F/G is:",
+        options: ["AB+ CD*E− FG /**", "AB+ CD* E− F **G /", "AB+ CD* E− *F *G /", "AB+ CDE *− * F *G /"],
+        answerIndex: 2,
+        explanation:
+            "Converting (A+B)*(C*D−E)*F/G step by step yields the postfix: AB+ CD* E− *F *G /",
+        references: [
+            { label: "Wikipedia: Reverse Polish Notation", url: "https://en.wikipedia.org/wiki/Reverse_Polish_notation" },
+        ],
+    },
+    {
+        id: "ds-128",
+        topic: "ds",
+        prompt: "When multiple elements compete for the same bucket in a hash table, what is this called?",
+        options: ["Overflow", "Underflow", "Collision", "Probing"],
+        answerIndex: 2,
+        explanation:
+            "A collision occurs when two or more keys hash to the same bucket index in a hash table.",
+        references: [
+            { label: "Wikipedia: Hash Collision", url: "https://en.wikipedia.org/wiki/Hash_collision" },
+        ],
+    },
+    {
+        id: "ds-129",
+        topic: "ds",
+        prompt: "When a pop operation is called on an empty stack, the condition is known as:",
+        options: ["Overflow", "Underflow", "Null pointer exception", "Garbage collection"],
+        answerIndex: 1,
+        explanation:
+            "Stack underflow occurs when pop or peek is attempted on an empty stack.",
+        references: [
+            { label: "Wikipedia: Stack Underflow", url: "https://en.wikipedia.org/wiki/Stack_overflow#Stack_underflow" },
+        ],
+    },
+    {
+        id: "ds-130",
+        topic: "ds",
+        prompt: "Which type of linked list has its last node pointing back to the first node?",
+        options: ["Singly linked list", "Doubly linked list", "Circular linked list", "Skip list"],
+        answerIndex: 2,
+        explanation:
+            "In a circular linked list, the tail node's next pointer points to the head, forming a closed loop.",
+        references: [
+            { label: "Wikipedia: Circular Linked List", url: "https://en.wikipedia.org/wiki/Linked_list#Circular_linked_list" },
+        ],
+    },
+    {
+        id: "ds-131",
+        topic: "ds",
+        prompt: "What is the time complexity of Depth First Search (DFS) traversal?",
+        options: ["O(V)", "O(E)", "O(V + E)", "O(V × E)"],
+        answerIndex: 2,
+        explanation:
+            "DFS visits every vertex once and examines every edge once, yielding O(V + E) time complexity.",
+        references: [
+            { label: "Wikipedia: Depth-First Search", url: "https://en.wikipedia.org/wiki/Depth-first_search" },
+        ],
+    },
+    {
+        id: "ds-132",
+        topic: "ds",
+        prompt: "What is the number of edges in a complete graph with n vertices?",
+        options: ["n", "n²", "n(n−1)/2", "2n"],
+        answerIndex: 2,
+        explanation:
+            "In a complete graph every vertex connects to every other, giving n(n−1)/2 undirected edges.",
+        references: [
+            { label: "Wikipedia: Complete Graph", url: "https://en.wikipedia.org/wiki/Complete_graph" },
+        ],
+    },
+    {
+        id: "ds-133",
+        topic: "ds",
+        prompt: "Which data structure is used to store undo history in a web browser?",
+        options: ["Queue", "Stack", "Heap", "Graph"],
+        answerIndex: 1,
+        explanation:
+            "Browser back-navigation uses a stack so the most recently visited page is returned first (LIFO).",
+        references: [
+            { label: "Wikipedia: Stack (Data Structure)", url: "https://en.wikipedia.org/wiki/Stack_(abstract_data_type)" },
+        ],
+    },
+    {
+        id: "ds-134",
+        topic: "ds",
+        prompt: "Which sorting algorithm guarantees O(n log n) in both average and worst case?",
+        options: ["Quick sort", "Bubble sort", "Insertion sort", "Merge sort"],
+        answerIndex: 3,
+        explanation:
+            "Merge sort consistently runs in O(n log n) for all inputs; quick sort's worst case degrades to O(n²).",
+        references: [
+            { label: "Wikipedia: Merge Sort", url: "https://en.wikipedia.org/wiki/Merge_sort" },
+        ],
+    },
+    {
+        id: "ds-135",
+        topic: "ds",
+        prompt: "Which algorithmic technique uses memoization to avoid redundant computations?",
+        options: ["Greedy approach", "Divide and conquer", "Dynamic programming", "Backtracking"],
+        answerIndex: 2,
+        explanation:
+            "Dynamic programming stores results of overlapping subproblems (memoization) to avoid recomputing them.",
+        references: [
+            { label: "Wikipedia: Memoization", url: "https://en.wikipedia.org/wiki/Memoization" },
+        ],
+    },
+    {
+        id: "ds-136",
+        topic: "ds",
+        prompt: "In the worst case, how many comparisons are needed to search a singly linked list of length n?",
+        options: ["1", "log n", "n/2", "n"],
+        answerIndex: 3,
+        explanation:
+            "In the worst case the target is the last element or absent, requiring n comparisons.",
+        references: [
+            { label: "Wikipedia: Linked List", url: "https://en.wikipedia.org/wiki/Linked_list" },
+        ],
+    },
+    {
+        id: "ds-137",
+        topic: "ds",
+        prompt: "What is the minimum number of queues needed to implement a priority queue?",
+        options: ["1", "2", "3", "4"],
+        answerIndex: 1,
+        explanation:
+            "A priority queue can be implemented using 2 queues — one for elements and one for priority ordering.",
+        references: [
+            { label: "Wikipedia: Priority Queue", url: "https://en.wikipedia.org/wiki/Priority_queue" },
+        ],
+    },
+    {
+        id: "ds-138",
+        topic: "ds",
+        prompt: "How many bubble-sort swaps are needed to sort [5, 1, 6, 2, 4] in ascending order?",
+        options: ["3", "4", "5", "6"],
+        answerIndex: 2,
+        explanation:
+            "Tracing bubble sort on [5,1,6,2,4] requires exactly 5 adjacent swaps to fully sort the array.",
+        references: [
+            { label: "Wikipedia: Bubble Sort", url: "https://en.wikipedia.org/wiki/Bubble_sort" },
+        ],
+    },
+    {
+        id: "ds-139",
+        topic: "ds",
+        prompt: "Which is the correct way to declare an array in C?",
+        options: ["int javatpoint[10];", "int javatpoint;", "javatpoint{20};", "array javatpoint[10];"],
+        answerIndex: 0,
+        explanation:
+            "In C, arrays are declared as: type name[size]; — e.g., int javatpoint[10];",
+        references: [
+            { label: "Wikipedia: C (Programming Language)", url: "https://en.wikipedia.org/wiki/C_(programming_language)" },
+        ],
+    },
+    {
+        id: "ds-140",
+        topic: "ds",
+        prompt: "What is the time complexity of the enqueue operation in a queue?",
+        options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+        answerIndex: 0,
+        explanation:
+            "Enqueue adds an element to the rear of the queue in constant time O(1).",
+        references: [
+            { label: "Wikipedia: Queue Operations", url: "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)" },
+        ],
+    },
 ];

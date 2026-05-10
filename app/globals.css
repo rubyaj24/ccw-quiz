@@ -1,28 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #f5f5f5;
+  --card: #121212;
+  --border: #2a2a2a;
+  --muted: #6b6b6b;
+  --accent: #2d2d2d;
+  --success: #22c55e;
+  --error: #ef4444;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-error: var(--error);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-dancing-script: var(--font-dancing-script);
   --font-nunito: var(--font-nunito);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-playfair-display: var(--font-playfair-display);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-nunito), Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.noise-surface {
+  position: relative;
+  isolation: isolate;
+}
+
+.noise-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  border-radius: inherit;
+}
+
+.noise-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.noise-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 96px 96px;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.noise-btn:hover::after {
+  opacity: 0.06;
+}
+
+.noise-btn:active::after {
+  opacity: 0.1;
+}
+
+[data-mode="exam"] {
+  --border: #4a1f7a;
+  --accent: #6b3fa0;
+}
+
+header,
+section,
+article,
+.noise-surface,
+.noise-btn {
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, background-color 0.35s ease;
+}
+
+button,
+a {
+  transition: background-color 0.2s ease, border-color 0.3s ease, color 0.2s ease, box-shadow 0.3s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.35s ease, border-color 0.35s ease;
+}
+
+[data-mode="exam"] .noise-surface,
+[data-mode="exam"] header {
+  box-shadow: inset 0 0 0 1px rgba(140, 80, 220, 0.12), 0 0 20px rgba(140, 80, 220, 0.06);
+}
+
+[data-mode="exam"] .noise-btn {
+  box-shadow: inset 0 0 0 1px rgba(140, 80, 220, 0.08);
+}
+
+[data-mode="exam"] .noise-btn:hover {
+  box-shadow: inset 0 0 0 1px rgba(140, 80, 220, 0.25), 0 0 16px rgba(140, 80, 220, 0.12), 0 0 32px rgba(140, 80, 220, 0.06);
 }

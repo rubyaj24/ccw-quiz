@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Dancing_Script, Nunito } from "next/font/google";
+import { Geist, Geist_Mono, Dancing_Script, Nunito, Playfair_Display } from "next/font/google";
+import "katex/dist/katex.min.css";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -22,6 +23,13 @@ const nunito = Nunito({
   subsets: ["latin"],
 });
 
+const playfairDisplay = Playfair_Display({
+  weight: "400",
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
+});
+
+
 export const metadata: Metadata = {
   title: "CCW Quiz Platform",
   description: "Quiz platform for OOP, OS, Data Structures, and core computer science topics.",
@@ -35,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${nunito.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${nunito.variable} ${playfairDisplay.variable} antialiased`}
       >
         {children}
       </body>

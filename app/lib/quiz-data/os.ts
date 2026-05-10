@@ -991,4 +991,273 @@ export const osQuestions: QuizQuestion[] = [
         explanation: "Mutual exclusion is one of the four necessary deadlock conditions.",
         references: [{ label: "Deadlock Conditions", url: "https://en.wikipedia.org/wiki/Deadlock" }],
     },
+    {
+    id: "os-extra-1",
+    topic: "os",
+    prompt: "What else is a command interpreter called?",
+    options: ["Prompt", "Kernel", "Shell", "Command"],
+    answerIndex: 2,
+    explanation:
+        "The shell acts as the command interpreter between the user and the operating system.",
+    references: [
+        {
+            label: "Wikipedia: Shell",
+            url: "https://en.wikipedia.org/wiki/Shell_(computing)",
+        },
+    ],
+},
+
+{
+    id: "os-extra-2",
+    topic: "os",
+    prompt: "Which of the following memory units can the processor access most rapidly?",
+    options: ["Main memory", "Virtual memory", "Cache memory", "ROM"],
+    answerIndex: 2,
+    explanation:
+        "Cache memory is placed close to the CPU and provides very fast access to frequently used data.",
+    references: [
+        {
+            label: "Wikipedia: CPU Cache",
+            url: "https://en.wikipedia.org/wiki/CPU_cache",
+        },
+    ],
+},
+
+{
+    id: "os-extra-3",
+    topic: "os",
+    prompt: "A file control block contains information about:",
+    options: [
+        "File ownership",
+        "File permissions",
+        "Location of file contents",
+        "All of the above",
+    ],
+    answerIndex: 3,
+    explanation:
+        "A file control block stores metadata such as ownership, permissions, and disk location details.",
+    references: [
+        {
+            label: "Wikipedia: File Control Block",
+            url: "https://en.wikipedia.org/wiki/File_control_block",
+        },
+    ],
+},
+
+{
+    id: "os-extra-4",
+    topic: "os",
+    prompt: "Which of the following is not an operating system?",
+    options: ["Windows", "Linux", "Oracle", "DOS"],
+    answerIndex: 2,
+    explanation:
+        "Oracle is primarily a database management company/product, not an operating system.",
+    references: [
+        {
+            label: "Wikipedia: Oracle Corporation",
+            url: "https://en.wikipedia.org/wiki/Oracle_Corporation",
+        },
+    ],
+},
+
+{
+    id: "os-extra-5",
+    topic: "os",
+    prompt: "The child process completes execution while the parent continues executing. The child process becomes:",
+    options: ["Orphan", "Zombie", "Body", "Dead"],
+    answerIndex: 1,
+    explanation:
+        "A zombie process has completed execution but still has an entry in the process table until the parent collects its exit status.",
+    references: [
+        {
+            label: "Wikipedia: Zombie Process",
+            url: "https://en.wikipedia.org/wiki/Zombie_process",
+        },
+    ],
+},
+
+{
+    id: "os-extra-6",
+    topic: "os",
+    prompt: "Which of the following is not shared between threads of the same process?",
+    options: ["Program counter", "Stack", "Address space", "Heap"],
+    answerIndex: 1,
+    explanation:
+        "Each thread maintains its own stack and program counter, while address space and heap are shared.",
+    references: [
+        {
+            label: "Wikipedia: Thread",
+            url: "https://en.wikipedia.org/wiki/Thread_(computing)",
+        },
+    ],
+},
+
+{
+    id: "os-extra-7",
+    topic: "os",
+    prompt: "What is POST in computer systems?",
+    options: [
+        "Power on self test",
+        "Power on start test",
+        "Power off self test",
+        "Power off start test",
+    ],
+    answerIndex: 0,
+    explanation:
+        "POST is a diagnostic testing sequence executed during system startup.",
+    references: [
+        {
+            label: "Wikipedia: Power-on self-test",
+            url: "https://en.wikipedia.org/wiki/Power-on_self-test",
+        },
+    ],
+},
+
+{
+    id: "os-extra-8",
+    topic: "os",
+    prompt: "Logical memory is broken into blocks of the same size called:",
+    options: ["Frames", "Pages", "Backing store", "Segments"],
+    answerIndex: 1,
+    explanation:
+        "Paging divides logical memory into fixed-size blocks called pages.",
+    references: [
+        {
+            label: "Wikipedia: Paging",
+            url: "https://en.wikipedia.org/wiki/Paging",
+        },
+    ],
+},
+
+{
+    id: "os-extra-9",
+    topic: "os",
+    prompt: "What is a Translation Lookaside Buffer miss?",
+    options: [
+        "The page is found in cache",
+        "The page number is not found in the TLB",
+        "The disk head misses the sector",
+        "The page is corrupted",
+    ],
+    answerIndex: 1,
+    explanation:
+        "A TLB miss occurs when the required virtual-to-physical mapping is not present in the Translation Lookaside Buffer.",
+    references: [
+        {
+            label: "Wikipedia: Translation Lookaside Buffer",
+            url: "https://en.wikipedia.org/wiki/Translation_lookaside_buffer",
+        },
+    ],
+},
+
+{
+    id: "os-extra-10",
+    topic: "os",
+    prompt: "The degree of multiprogramming refers to:",
+    options: [
+        "Processes executed per unit time",
+        "Processes in the ready queue",
+        "Processes in the I/O queue",
+        "Processes in memory",
+    ],
+    answerIndex: 3,
+    explanation:
+        "Degree of multiprogramming is the number of processes kept in main memory simultaneously.",
+    references: [
+        {
+            label: "Wikipedia: Multiprogramming",
+            url: "https://en.wikipedia.org/wiki/Multiprogramming",
+        },
+    ],
+},
+
+{
+    id: "os-extra-11",
+    topic: "os",
+    prompt: "What is the maximum filename length in DOS?",
+    options: ["8", "16", "32", "255"],
+    answerIndex: 0,
+    explanation:
+        "Classic DOS follows the 8.3 filename convention, allowing 8-character filenames.",
+    references: [
+        {
+            label: "Wikipedia: 8.3 Filename",
+            url: "https://en.wikipedia.org/wiki/8.3_filename",
+        },
+    ],
+},
+
+{
+    id: "os-extra-12",
+    topic: "os",
+    prompt: "Which scheduler selects processes to be brought into the ready queue?",
+    options: [
+        "Short-term scheduler",
+        "Long-term scheduler",
+        "Medium-term scheduler",
+        "Dispatcher",
+    ],
+    answerIndex: 1,
+    explanation:
+        "The long-term scheduler controls the degree of multiprogramming by selecting processes to admit into memory.",
+    references: [
+        {
+            label: "Wikipedia: Long-term Scheduler",
+            url: "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        },
+    ],
+},
+
+{
+    id: "os-extra-13",
+    topic: "os",
+    prompt: "Dirty bit in memory management indicates that:",
+    options: [
+        "A page is corrupted",
+        "A page has been modified after loading",
+        "A page is invalid",
+        "A page is locked",
+    ],
+    answerIndex: 1,
+    explanation:
+        "Dirty bit shows whether a page has been modified and must be written back to disk before replacement.",
+    references: [
+        {
+            label: "Wikipedia: Dirty Bit",
+            url: "https://en.wikipedia.org/wiki/Dirty_bit",
+        },
+    ],
+},
+
+{
+    id: "os-extra-14",
+    topic: "os",
+    prompt: "What is bootstrapping commonly called?",
+    options: ["Cold boot", "Warm boot", "Hybrid boot", "Soft reset"],
+    answerIndex: 0,
+    explanation:
+        "Bootstrapping or cold boot refers to starting the computer from a powered-off state.",
+    references: [
+        {
+            label: "Wikipedia: Booting",
+            url: "https://en.wikipedia.org/wiki/Booting",
+        },
+    ],
+},
+
+{
+    id: "os-extra-15",
+    topic: "os",
+    prompt: "Which OS queue stores processes waiting to execute?",
+    options: ["Job queue", "Ready queue", "Execution queue", "Device queue"],
+    answerIndex: 1,
+    explanation:
+        "Processes that are ready to run and waiting for CPU allocation are kept in the ready queue.",
+    references: [
+        {
+            label: "Wikipedia: Ready Queue",
+            url: "https://en.wikipedia.org/wiki/Scheduling_(computing)",
+        },
+    ],
+},
 ];

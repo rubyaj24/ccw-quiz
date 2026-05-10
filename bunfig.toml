@@ -1,0 +1,14 @@
+# Bun configuration for ccw-quiz
+
+[install]
+# Use bun's faster package installation
+registry = "https://registry.npmjs.org/"
+# Ensure packages with postinstall scripts are trusted
+trusted = ["katex"]
+
+[test]
+# Configure Bun's built-in test runner (when used)
+preload = []
+
+[env]
+NODE_ENV = "development"
