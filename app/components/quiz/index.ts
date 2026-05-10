@@ -11,3 +11,5 @@ export { SubjectIcon } from "./SubjectIcon";
 export { ExamSlider } from "./ExamSlider";
 export { SliderCheckpoints } from "./SliderCheckpoints";
 export { FeatureSlideshow } from "./FeatureSlideshow";
+export { ShortcutsHelp } from "./ShortcutsHelp";
+export { ShortcutHint } from "./ShortcutHint";

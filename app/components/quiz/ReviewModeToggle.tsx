@@ -1,6 +1,8 @@
 "use client";
 
+import { CgCheck } from "react-icons/cg";
 import type { RevealMode } from "../../lib/quiz-types";
+import { BsLightning } from "react-icons/bs";
 
 export function ReviewModeToggle({
   revealMode,
@@ -27,7 +29,7 @@ export function ReviewModeToggle({
             revealMode === "check" ? "text-background" : "text-foreground/80 hover:text-foreground"
           }`}
         >
-          Show after Check
+          <CgCheck size={14} className="inline" /> Check
         </button>
         <button
           type="button"
@@ -37,7 +39,7 @@ export function ReviewModeToggle({
             revealMode === "instant" ? "text-background" : "text-foreground/80 hover:text-foreground"
           }`}
         >
-          Instant reveal
+          <BsLightning size={14} className="inline" />Instant
         </button>
       </div>
     </div>

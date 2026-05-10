@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { totalQuestions, topicLabels } from "./lib";
 import { useQuizState } from "./lib/use-quiz-state";
-import { Eyebrow, ReviewModeToggle, Footer, FeatureSlideshow } from "./components/quiz";
-import { FiBookOpen, FiCpu } from "react-icons/fi";
+import { useKeyboardShortcuts } from "./lib/use-keyboard-shortcuts";
+import { Eyebrow, ReviewModeToggle, Footer, FeatureSlideshow, ShortcutsHelp } from "./components/quiz";
+import { FiBookOpen, FiCpu, FiKey } from "react-icons/fi";
 
 const TopicSelectView = dynamic(() => import("./components/views/TopicSelectView").then((m) => m.TopicSelectView), { ssr: false });
 const ExamInstructionsView = dynamic(() => import("./components/views/ExamInstructionsView").then((m) => m.ExamInstructionsView), { ssr: false });
@@ -36,6 +37,24 @@ export default function Home() {
       setContentRevealed(true);
     }
   }, [q.quizState]);
+
+  const { isDesktop, shortcutsVisible, getShortcuts, toggleShortcuts } = useKeyboardShortcuts(
+    q.quizState,
+    q.actions,
+    {
+      currentQuestionId: q.currentQuestion?.id,
+      currentQuestionOptionsCount: q.currentQuestion?.options.length,
+      hasAnsweredCurrentQuestion: q.hasAnsweredCurrentQuestion,
+      hasCheckedCurrentQuestion: q.hasCheckedCurrentQuestion,
+      currentIndex: q.currentIndex,
+      totalQuestions: q.quizState === "exam-active" ? q.examQuestions.length : q.topicQuestions.length,
+      selectedTopic: q.selectedTopic,
+      revealMode: q.revealMode,
+    },
+  );
+
+  const practiceShortcuts = isDesktop && q.quizState === "active" ? { topics: "Ctrl+Backspace" as const, next: "Ctrl+Enter" as const } : undefined;
+  const examShortcuts = isDesktop && q.quizState === "exam-active" ? { previous: "\u2190" as const, next: "Ctrl+Enter" as const, submit: "Enter" as const, quit: "Ctrl+Backspace" as const } : undefined;
 
   const themeMode = q.quizState === "select"
     ? selectedMode
@@ -206,6 +225,7 @@ export default function Home() {
           onToggleIssue={() => q.actions.toggleIssueForm(q.currentQuestion.id)}
           onDraftChange={(v) => q.actions.updateIssueDraft(q.currentQuestion.id, v)}
           onSubmitIssue={() => q.actions.submitIssue(q.currentQuestion)}
+          desktopShortcuts={practiceShortcuts}
         />
       )}
 
@@ -246,6 +266,7 @@ export default function Home() {
           examIndicatorExpanded={q.examIndicatorExpanded}
           onSetCurrentIndex={q.actions.setCurrentIndex}
           onTogglePalette={q.actions.setExamIndicatorExpanded}
+          desktopShortcuts={examShortcuts}
         />
       )}
 
@@ -267,6 +288,24 @@ export default function Home() {
       >
         <Footer stars={q.stars} />
       </div>
+
+      {isDesktop && (
+        <button
+          type="button"
+          onClick={toggleShortcuts}
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-2 text-xs text-muted shadow-lg transition hover:border-foreground/40 hover:text-foreground"
+          title="Keyboard shortcuts"
+        >
+          <FiKey size={14} />
+          Shortcuts
+        </button>
+      )}
+
+      <ShortcutsHelp
+        visible={shortcutsVisible}
+        onClose={() => toggleShortcuts()}
+        shortcuts={getShortcuts()}
+      />
     </main>
   );
 }

@@ -2,8 +2,8 @@
 
 import type { QuizQuestion, Topic } from "../../lib";
 import { topicLabels } from "../../lib";
-import { QuestionContent, OptionButton, ExplanationBox, SubjectIcon } from "../quiz";
-import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiXCircle } from "react-icons/fi";
+import { QuestionContent, OptionButton, ExplanationBox, SubjectIcon, ShortcutHint } from "../quiz";
+import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiExternalLink, FiXCircle } from "react-icons/fi";
 
 export function PracticeQuizView({
   question,
@@ -27,6 +27,7 @@ export function PracticeQuizView({
   onToggleIssue,
   onDraftChange,
   onSubmitIssue,
+  desktopShortcuts,
 }: {
   question: QuizQuestion;
   currentIndex: number;
@@ -49,6 +50,7 @@ export function PracticeQuizView({
   onToggleIssue: () => void;
   onDraftChange: (value: string) => void;
   onSubmitIssue: () => void;
+  desktopShortcuts?: { topics?: string; check?: string; next?: string };
 }) {
   const optionLocked = revealMode === "instant" ? hasAnswered : hasChecked;
 
@@ -66,6 +68,15 @@ export function PracticeQuizView({
               ? <FiCheckCircle size={16} className="text-success" />
               : <FiXCircle size={16} className="text-error" />
           )}
+          <button
+            type="button"
+            onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(question.prompt)}`, "_blank", "noopener")}
+            className="flex items-center gap-1 rounded-md border border-border/50 px-2 py-1 text-xs transition hover:border-foreground/40 hover:text-foreground"
+            title="Search on Google"
+          >
+            <FiExternalLink size={12} />
+            Ask Google
+          </button>
         </div>
       </div>
 
@@ -111,6 +122,7 @@ export function PracticeQuizView({
           >
             <FiArrowLeft size={16} />
             Topics
+            {desktopShortcuts?.topics && <ShortcutHint keys={desktopShortcuts.topics} />}
           </button>
           <button
             type="button"
@@ -119,11 +131,11 @@ export function PracticeQuizView({
             className="noise-btn flex items-center gap-1.5 rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {revealMode === "check" && !hasChecked ? (
-            <><FiCheckCircle size={16} /> Check</>
+            <><FiCheckCircle size={16} /> Check{desktopShortcuts?.check && <ShortcutHint keys={desktopShortcuts.check} />}</>
           ) : currentIndex === totalQuestions - 1 ? (
-            "Finish Quiz"
+            <>Finish Quiz{desktopShortcuts?.next && <ShortcutHint keys={desktopShortcuts.next} />}</>
           ) : (
-            <><span>Next</span> <FiArrowRight size={16} /></>
+            <><span>Next</span> <ShortcutHint keys={desktopShortcuts?.next ?? "Ctrl+Enter"} /> <FiArrowRight size={16} /></>
           )}
         </button>
       </div>

@@ -540,7 +540,7 @@ export const osQuestions: QuizQuestion[] = [
         topic: "os",
         prompt: "If page size is 16 KB, how many bits are required for offset?",
         options: ["10", "12", "14", "16"],
-        answerIndex: 3,
+        answerIndex: 2,
         explanation: "16 KB = 2^14 bytes, so offset needs 14 bits.",
         references: [{ label: "Paging", url: "https://en.wikipedia.org/wiki/Paging" }],
     },
@@ -1080,10 +1080,10 @@ export const osQuestions: QuizQuestion[] = [
     id: "os-extra-6",
     topic: "os",
     prompt: "Which of the following is not shared between threads of the same process?",
-    options: ["Program counter", "Stack", "Address space", "Heap"],
+    options: ["Global variables", "Stack", "Address space", "Heap"],
     answerIndex: 1,
     explanation:
-        "Each thread maintains its own stack and program counter, while address space and heap are shared.",
+        "Each thread maintains its own stack, while address space, global variables, and heap are shared.",
     references: [
         {
             label: "Wikipedia: Thread",
