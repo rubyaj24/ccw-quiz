@@ -2,12 +2,12 @@
 
 A modern quiz platform for **Comprehensive Course Work (CCW)** topics — built with Next.js 16, Tailwind CSS v4, and TypeScript.
 
-Practice or take timed exams across 10 core computer science domains with a noir-themed UI, animated infographics, and server-secured exam scoring.
+Practice or take timed exams across 10 core computer science domains (Discrete Mathematics merged into Mathematics) with a noir-themed UI, animated infographics, and server-secured exam scoring.
 
 ## Features
 
 ### Two Modes
-- **Quiz Mode** — topic-by-topic practice with instant or check-based answer reveal. Browse 10 domains with gradient-masked thumbnail cards.
+- **Quiz Mode** — topic-by-topic practice with instant or check-based answer reveal. Browse 10 domains (Discrete Mathematics merged into Mathematics) with gradient-masked thumbnail cards.
 - **Exam Mode** — full-length mixed-topic exam with configurable question count (25–100), time limit (30–120 min), and no-repeat cooldown. Server-side sessions keep answer keys hidden until submission.
 
 ### Question Review
@@ -50,20 +50,20 @@ Practice or take timed exams across 10 core computer science domains with a noir
 
 ## Domains
 
-10 question banks with curated MCQs:
+10 question banks with curated MCQs (421 questions total):
 
 | Topic | File |
 |-------|------|
-| Object-Oriented Programming | `oop.ts` |
-| Operating Systems | `os.ts` |
-| Data Structures | `ds.ts` |
-| Core CS | `core.ts` |
-| Mathematics | `maths.ts` |
-| Vectors | `vectors.ts` |
-| Matrices | `matrices.ts` |
-| Differential Equations | `differential.ts` |
-| Discrete Mathematics | `discrete.ts` |
-| Computer Graphics | `graphics.ts` |
+| Object-Oriented Programming | `oop.ts` (50) |
+| Operating Systems | `os.ts` (105) |
+| Data Structures | `ds.ts` (125) |
+| Core CS | `core.ts` (21) |
+| Mathematics *(Discrete Mathematics merged in)* | `maths.ts` (20) |
+| Vectors | `vectors.ts` (10) |
+| Matrices | `matrices.ts` (10) |
+| Differential Equations | `differential.ts` (10) |
+| Formal Language & Automata Theory | `automata.ts` (60) |
+| Computer Graphics | `graphics.ts` (10) |
 
 ## Project Structure
 

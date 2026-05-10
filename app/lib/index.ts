@@ -9,8 +9,8 @@ export const topicLabels: Record<Topic, string> = {
 	vectors: "Vector Calculus",
 	matrices: "Matrices & Determinants",
 	differential: "Differential Equations",
-	discrete: "Discrete Mathematics",
 	graphics: "Engineering Graphics",
+	automata: "Formal Language & Automata Theory",
 };
 
 export { topicQuestionCounts, totalQuestions, loadQuestionsForTopic } from "./question-loader";

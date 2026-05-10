@@ -1,4 +1,4 @@
-export type Topic = "oop" | "os" | "ds" | "core" | "maths" | "vectors" | "matrices" | "differential" | "discrete" | "graphics";
+export type Topic = "oop" | "os" | "ds" | "core" | "maths" | "vectors" | "matrices" | "differential" | "graphics" | "automata";
 
 export type QuizQuestion = {
   id: string;

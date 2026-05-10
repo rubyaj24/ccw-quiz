@@ -24,8 +24,8 @@ const icons: Record<Topic, { primary: React.ReactNode; secondary: React.ReactNod
   vectors: { primary: <FiArrowUp size={28} />, secondary: <FiActivity size={28} /> },
   matrices: { primary: <FiGrid size={28} />, secondary: <FiBook size={28} /> },
   differential: { primary: <FiActivity size={28} />, secondary: <FiArrowUp size={28} /> },
-  discrete: { primary: <FiShare size={28} />, secondary: <FiGitBranch size={28} /> },
   graphics: { primary: <FiImage size={28} />, secondary: <FiGrid size={28} /> },
+  automata: { primary: <FiGrid size={28} />, secondary: <FiActivity size={28} /> },
 };
 
 export function SubjectIcon({ topic, size }: { topic: Topic; size?: number }) {

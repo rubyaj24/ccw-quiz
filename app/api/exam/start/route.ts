@@ -9,7 +9,6 @@ import { mathsQuestions } from "@/app/lib/quiz-data/maths";
 import { vectorQuestions } from "@/app/lib/quiz-data/vectors";
 import { matrixQuestions } from "@/app/lib/quiz-data/matrices";
 import { differentialQuestions } from "@/app/lib/quiz-data/differential";
-import { discreteQuestions } from "@/app/lib/quiz-data/discrete";
 import { graphicsQuestions } from "@/app/lib/quiz-data/graphics";
 import type { ExamStartRequest } from "@/app/lib/exam-api";
 import { pruneExpiredSessions, saveExamSession } from "../session-store";
@@ -23,7 +22,6 @@ const questions = [
   ...vectorQuestions,
   ...matrixQuestions,
   ...differentialQuestions,
-  ...discreteQuestions,
   ...graphicsQuestions,
 ];
 

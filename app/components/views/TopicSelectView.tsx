@@ -13,8 +13,8 @@ const topicImage: Record<Topic, string> = {
   vectors: "vector.png",
   matrices: "matrix.png",
   differential: "diff.png",
-  discrete: "discrete.png",
   graphics: "graphics.png",
+  automata: "automata.png",
 };
 
 export function TopicSelectView({

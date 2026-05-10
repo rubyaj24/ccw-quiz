@@ -5,15 +5,15 @@ export const topicQuestionCounts: Record<Topic, number> = {
   os: 105,
   ds: 125,
   core: 21,
-  maths: 10,
+  maths: 20,
   vectors: 10,
   matrices: 10,
   differential: 10,
-  discrete: 10,
   graphics: 10,
+  automata: 60,
 };
 
-export const totalQuestions = 361;
+export const totalQuestions = 421;
 
 const questionBankLoaders: Record<Topic, () => Promise<QuizQuestion[]>> = {
   oop: () => import("./quiz-data/oop").then((m) => m.oopQuestions),
@@ -24,8 +24,8 @@ const questionBankLoaders: Record<Topic, () => Promise<QuizQuestion[]>> = {
   vectors: () => import("./quiz-data/vectors").then((m) => m.vectorQuestions),
   matrices: () => import("./quiz-data/matrices").then((m) => m.matrixQuestions),
   differential: () => import("./quiz-data/differential").then((m) => m.differentialQuestions),
-  discrete: () => import("./quiz-data/discrete").then((m) => m.discreteQuestions),
   graphics: () => import("./quiz-data/graphics").then((m) => m.graphicsQuestions),
+  automata: () => import("./quiz-data/automata").then((m) => m.automataQuestions),
 };
 
 const questionCache = new Map<Topic, QuizQuestion[]>();
