@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Dancing_Script, Nunito, Playfair_Display } from "next/font/google";
+import { Analytics } from '@vercel/analytics/next';
 import "katex/dist/katex.min.css";
 import "./globals.css";
 
@@ -46,6 +47,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${nunito.variable} ${playfairDisplay.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
