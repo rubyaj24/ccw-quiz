@@ -456,9 +456,9 @@ export const automataQuestions: QuizQuestion[] = [
     topic: "automata",
     prompt: "The number of states in a Turing machine is:",
     options: ["Finite", "Infinite", "Always 1", "At most 100"],
-    answerIndex: 1,
+    answerIndex: 0,
     explanation:
-      "A Turing machine has an infinite tape but its set of internal states is finite. However, the number of possible Turing machines is infinite, and there is no upper bound on the number of states a TM may have.",
+      "A Turing machine has an infinite tape but its set of internal states is finite — the formal definition of a TM specifies a finite set of states Q. The number of possible TMs is infinite, but each individual TM has a finite state set.",
     references: [
       {
         label: "Wikipedia: Turing Machine",
@@ -1251,9 +1251,9 @@ export const automataQuestions: QuizQuestion[] = [
     prompt:
       "Given grammar G: (1)S→AS, (2)S→AAS, (3)A→SA, (4)A→aa — which productions violate Chomsky Normal Form?",
     options: ["2 and 4", "1 and 3", "1, 2, 3, and 4", "2, 3, and 4"],
-    answerIndex: 1,
+    answerIndex: 0,
     explanation:
-      "CNF requires productions of the form A→BC or A→a. S→AS (1) and A→SA (3) have a terminal mixed with non-terminals on the RHS, violating CNF. S→AAS (2) has three symbols (also a violation), and A→aa has two terminals.",
+      "CNF requires productions of the form A→BC (exactly two non-terminals) or A→a (single terminal). S→AS (1) and A→SA (3) are valid A→BC forms. S→AAS (2) has three symbols on the RHS, violating CNF. A→aa (4) has two terminals instead of one.",
     references: [
       {
         label: "Wikipedia: Chomsky Normal Form",
