@@ -119,9 +119,9 @@ export const coaQuestions: QuizQuestion[] = [
             "To facilitate data transfer between various devices",
             "All of the above",
         ],
-        answerIndex: 0,
+        answerIndex: 3,
         explanation:
-            "The primary function of a bus is to connect the various components and devices to the CPU, enabling communication and data transfer.",
+            "A system bus connects components to the CPU, provides communication paths, and facilitates data transfer between all devices — encompassing all of the above.",
         references: [
             { label: "Wikipedia: Bus (Computing)", url: "https://en.wikipedia.org/wiki/Bus_(computing)" },
         ],
@@ -179,9 +179,9 @@ export const coaQuestions: QuizQuestion[] = [
         topic: "coa",
         prompt: "For the control function x T1: A ← B, the transfer occurs when:",
         options: ["x=0 and T1=1", "x=1 and T1=1", "x=1 and T1=0", "Both a and c"],
-        answerIndex: 0,
+        answerIndex: 1,
         explanation:
-            "The condition 'x T1' means the transfer is enabled when both x and T1 are asserted. However, per the PDF, the correct answer is x=0 and T1=1 (condition flag interpretation).",
+            "In RTL, the control function 'x T1' is a boolean AND condition — the transfer A←B occurs when both x=1 and T1=1.",
         references: [
             { label: "Wikipedia: Register Transfer Language", url: "https://en.wikipedia.org/wiki/Register_transfer_language" },
         ],
@@ -913,9 +913,9 @@ export const coaQuestions: QuizQuestion[] = [
         topic: "coa",
         prompt: "A processor has an instruction cache with 90% hit rate and 1 ns access time. If the cache miss penalty is 20 ns, what is the average memory access time?",
         options: ["1.9 ns", "2.2 ns", "3.0 ns", "11 ns"],
-        answerIndex: 1,
+        answerIndex: 2,
         explanation:
-            "AMAT = hit rate × cache time + miss rate × (cache time + miss penalty) = 0.9×1 + 0.1×(1+20) = 0.9 + 2.1 = 3 ns — or using hit time + miss rate × penalty: 1 + 0.1×12 = 2.2 ns depending on formula variant.",
+            "AMAT = hit time + miss rate × miss penalty = 1 + 0.1 × 20 = 3.0 ns.",
         references: [
             { label: "Wikipedia: CPU Cache Performance", url: "https://en.wikipedia.org/wiki/CPU_cache" },
         ],
@@ -925,9 +925,9 @@ export const coaQuestions: QuizQuestion[] = [
         topic: "coa",
         prompt: "A direct-mapped cache has a size of 8 KB and a block size of 32 bytes. How many bits are needed for the cache index?",
         options: ["5 bits", "6 bits", "7 bits", "8 bits"],
-        answerIndex: 2,
+        answerIndex: 3,
         explanation:
-            "Number of lines = 8KB / 32B = 256 lines. Index bits = log2(256) = 8. However offset = log2(32) = 5 bits, and index = log2(8192/32) = log2(256) = 8 — the PDF states 7 bits as the answer for the index field specifically.",
+            "Lines = 8 KB / 32 B = 256. For a direct-mapped cache, sets = lines = 256. Index bits = log₂(256) = 8.",
         references: [
             { label: "Wikipedia: CPU Cache", url: "https://en.wikipedia.org/wiki/CPU_cache" },
         ],
@@ -1029,11 +1029,11 @@ export const coaQuestions: QuizQuestion[] = [
     {
         id: "ccw24-37",
         topic: "coa",
-        prompt: "A cache has 64 KB capacity, 128-byte lines, and is 4-way set associative with 32-bit addresses. How many lines (blocks) does the cache have?",
+        prompt: "A cache has 64 KB capacity, 128-byte lines, and is 4-way set associative with 32-bit addresses. How many sets does the cache have?",
         options: ["64", "128", "256", "32"],
         answerIndex: 1,
         explanation:
-            "Total lines = cache size / line size = 64 KB / 128 B = 512 lines. Sets = 512 / 4 = 128.",
+            "Total lines = 64 KB / 128 B = 512 lines. Sets = 512 / 4 = 128.",
         references: [
             { label: "Wikipedia: CPU Cache", url: "https://en.wikipedia.org/wiki/CPU_cache" },
         ],
