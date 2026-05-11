@@ -60,6 +60,39 @@ function AccuracyBar({ label, pct, count }: { label: string; pct: number; count:
   );
 }
 
+const CAPTIONS: [number, string[]][] = [
+  [90, [
+    "Flawless. You're not just prepared — you're the preparation.",
+    "If exams were battles, you'd be the general.",
+    "At this rate, the syllabus should be scared of you.",
+    "You didn't just pass — you made the question bank your biography.",
+  ]],
+  [75, [
+    "Strong work. The gaps are closing fast.",
+    "You're in solid shape. Keep sharpening those edges.",
+    "Nearly there. One more revision and it's yours.",
+    "Above the line — now hold it and push higher.",
+  ]],
+  [60, [
+    "Decent footing. The foundation is there, just needs polish.",
+    "You know enough to be dangerous. Time to seal the leaks.",
+    "Middle of the pack — but the top is within reach.",
+    "You're further along than you think. Keep grinding.",
+  ]],
+  [40, [
+    "Rough ride, but you showed up. That counts.",
+    "Not where you want to be, but now you know where to dig.",
+    "This is just a diagnostic — the real win is the work ahead.",
+    "Low score, high signal. You know exactly what to fix.",
+  ]],
+  [0, [
+    "Tough one. The only way from here is up.",
+    "Consider this a heat map of what needs attention.",
+    "Every expert was once a beginner who didn't quit.",
+    "This isn't a verdict — it's a starting point.",
+  ]],
+];
+
 export function ExamCompleteView({
   examResult,
   examTopicBreakdown,
@@ -77,9 +110,13 @@ export function ExamCompleteView({
     (t) => examTopicBreakdown[t] > 0
   );
 
+  const captionBucket = CAPTIONS.find(([threshold]) => examResult.scorePercentage >= threshold) ?? CAPTIONS.at(-1)!;
+  const caption = captionBucket[1][Math.floor(Math.random() * captionBucket[1].length)];
+
   return (
     <section className="noise-surface rounded-xl border border-border bg-card p-6">
       <h2 className="text-2xl font-semibold">Exam Complete</h2>
+      <p className="mt-1 text-sm italic text-muted">&ldquo;{caption}&rdquo;</p>
 
       <div className="mt-6 flex flex-col items-center gap-8 sm:flex-row">
         <ScoreRing pct={examResult.scorePercentage} />

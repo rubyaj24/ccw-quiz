@@ -5,6 +5,30 @@ import path from "path";
 export const alt = "CCW Quiz Platform";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+export const dynamic = "force-dynamic";
+
+const CAPTIONS: string[] = [
+  "Flawless. You're not just prepared — you're the preparation.",
+  "If exams were battles, you'd be the general.",
+  "At this rate, the syllabus should be scared of you.",
+  "You didn't just pass — you made the question bank your biography.",
+  "Strong work. The gaps are closing fast.",
+  "You're in solid shape. Keep sharpening those edges.",
+  "Nearly there. One more revision and it's yours.",
+  "Above the line — now hold it and push higher.",
+  "Decent footing. The foundation is there, just needs polish.",
+  "You know enough to be dangerous. Time to seal the leaks.",
+  "Middle of the pack — but the top is within reach.",
+  "You're further along than you think. Keep grinding.",
+  "Rough ride, but you showed up. That counts.",
+  "Not where you want to be, but now you know where to dig.",
+  "This is just a diagnostic — the real win is the work ahead.",
+  "Low score, high signal. You know exactly what to fix.",
+  "Tough one. The only way from here is up.",
+  "Consider this a heat map of what needs attention.",
+  "Every expert was once a beginner who didn't quit.",
+  "This isn't a verdict — it's a starting point.",
+];
 
 async function loadGoogleFont(name: string, weight: number): Promise<ArrayBuffer> {
   const css = await fetch(
@@ -26,6 +50,7 @@ export default async function Image() {
   const thumbBuffer = fs.readFileSync(path.join(process.cwd(), "public", "thumb.png"));
   const thumbBase64 = thumbBuffer.toString("base64");
   const thumbUrl = `data:image/png;base64,${thumbBase64}`;
+  const caption = CAPTIONS[Math.floor(Math.random() * CAPTIONS.length)];
 
   return new ImageResponse(
     (
@@ -99,14 +124,16 @@ export default async function Image() {
           </div>
           <div
             style={{
-              fontSize: 16,
+              fontSize: 14,
               color: "#a0a0a0",
               fontFamily: "Nunito",
               fontWeight: 400,
+              fontStyle: "italic",
               marginTop: 2,
+              maxWidth: 700,
             }}
           >
-            421 curated questions across 10 core domains
+            {caption}
           </div>
         </div>
       </div>
