@@ -12,6 +12,7 @@ import {
   FiActivity,
   FiShare,
   FiImage,
+  FiMonitor,
 } from "react-icons/fi";
 import { useState } from "react";
 
@@ -26,6 +27,7 @@ const icons: Record<Topic, { primary: React.ReactNode; secondary: React.ReactNod
   differential: { primary: <FiActivity size={28} />, secondary: <FiArrowUp size={28} /> },
   graphics: { primary: <FiImage size={28} />, secondary: <FiGrid size={28} /> },
   automata: { primary: <FiGrid size={28} />, secondary: <FiActivity size={28} /> },
+  coa: { primary: <FiMonitor size={28} />, secondary: <FiCpu size={28} /> },
 };
 
 export function SubjectIcon({ topic, size }: { topic: Topic; size?: number }) {

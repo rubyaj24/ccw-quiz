@@ -11,6 +11,7 @@ export const topicLabels: Record<Topic, string> = {
 	differential: "Differential Equations",
 	graphics: "Engineering Graphics",
 	automata: "Formal Language & Automata Theory",
+	coa: "Computer Organization & Architecture",
 };
 
 export { topicQuestionCounts, totalQuestions, loadQuestionsForTopic } from "./question-loader";

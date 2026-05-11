@@ -15,6 +15,7 @@ const topicImage: Record<Topic, string> = {
   differential: "diff.png",
   graphics: "graphics.png",
   automata: "automata.png",
+  coa: "coa.png",
 };
 
 export function TopicSelectView({

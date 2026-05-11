@@ -37,7 +37,7 @@ export type ExamResponses = Record<string, number | undefined>;
 
 export type RandomGenerator = () => number;
 
-const ALL_TOPICS: Topic[] = ["oop", "os", "ds", "core", "maths", "vectors", "matrices", "differential", "graphics", "automata"];
+const ALL_TOPICS: Topic[] = ["oop", "os", "ds", "core", "maths", "vectors", "matrices", "differential", "graphics", "automata", "coa"];
 
 export const EXAM_DEFAULTS: ExamConfig = {
   totalQuestions: 100,
@@ -54,6 +54,7 @@ export const EXAM_DEFAULTS: ExamConfig = {
     differential: 0,
     graphics: 0,
     automata: 0,
+    coa: 0,
   },
 };
 
@@ -68,6 +69,7 @@ const emptyTopicRecord = (): Record<Topic, number> => ({
   differential: 0,
   graphics: 0,
   automata: 0,
+  coa: 0,
 });
 
 const emptyQuestionArrayRecord = (): Record<Topic, QuizQuestion[]> => ({
@@ -81,6 +83,7 @@ const emptyQuestionArrayRecord = (): Record<Topic, QuizQuestion[]> => ({
   differential: [],
   graphics: [],
   automata: [],
+  coa: [],
 });
 
 export const createSeededRandom = (seed: number): RandomGenerator => {

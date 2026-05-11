@@ -11,9 +11,10 @@ export const topicQuestionCounts: Record<Topic, number> = {
   differential: 10,
   graphics: 10,
   automata: 60,
+  coa: 73,
 };
 
-export const totalQuestions = 421;
+export const totalQuestions = 494;
 
 const questionBankLoaders: Record<Topic, () => Promise<QuizQuestion[]>> = {
   oop: () => import("./quiz-data/oop").then((m) => m.oopQuestions),
@@ -26,6 +27,7 @@ const questionBankLoaders: Record<Topic, () => Promise<QuizQuestion[]>> = {
   differential: () => import("./quiz-data/differential").then((m) => m.differentialQuestions),
   graphics: () => import("./quiz-data/graphics").then((m) => m.graphicsQuestions),
   automata: () => import("./quiz-data/automata").then((m) => m.automataQuestions),
+  coa: () => import("./quiz-data/coa").then((m) => m.coaQuestions),
 };
 
 const questionCache = new Map<Topic, QuizQuestion[]>();

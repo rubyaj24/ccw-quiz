@@ -50,7 +50,7 @@ Practice or take timed exams across 10 core computer science domains (Discrete M
 
 ## Domains
 
-10 question banks with curated MCQs (421 questions total):
+11 question banks with curated MCQs (494 questions total):
 
 | Topic | File |
 |-------|------|
@@ -64,6 +64,7 @@ Practice or take timed exams across 10 core computer science domains (Discrete M
 | Differential Equations | `differential.ts` (10) |
 | Formal Language & Automata Theory | `automata.ts` (60) |
 | Computer Graphics | `graphics.ts` (10) |
+| Computer Organization & Architecture | `coa.ts` (73) |
 
 ## Project Structure
 

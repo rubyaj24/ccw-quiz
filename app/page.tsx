@@ -93,7 +93,7 @@ export default function Home() {
               Practice OOP, Operating Systems, Data Structures, Mathematics, and more.
             </p>
             <p className="mt-2 text-sm text-muted font-geist-sans">
-              {totalQuestions} curated questions across 10 core domains
+              {totalQuestions} curated questions across {Object.keys(topicLabels).length} core domains
             </p>
           </div>
 
