@@ -4,12 +4,17 @@ import { FiGithub, FiAlertCircle, FiStar, FiSend } from "react-icons/fi";
 
 export function Footer({ stars }: { stars: number | null }) {
   const handleShare = async () => {
-    const url = "https://ccw-quiz-cet.vercel.app";
-    if (navigator.share) {
-      await navigator.share({ title: "CCW Quiz Platform", text: "Practice core CS domains with CCW Quiz Platform", url });
-    } else {
-      await navigator.clipboard.writeText(url);
-    }
+    const url = window.location.origin;
+    const title = "CCW Quiz Platform";
+    const text = "Practice core CS domains with CCW Quiz Platform";
+
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, text, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+      }
+    } catch {}
   };
 
   return (
