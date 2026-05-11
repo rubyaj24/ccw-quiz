@@ -32,7 +32,7 @@ const playfairDisplay = Playfair_Display({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ccw-quiz.vercel.app"),
+  metadataBase: new URL("https://ccw-quiz-cet.vercel.app"),
   title: "CCW Quiz Platform",
   description: "Quiz platform for OOP, OS, Data Structures, and core computer science topics.",
   openGraph: {

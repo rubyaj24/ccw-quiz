@@ -4,7 +4,7 @@ import { FiGithub, FiAlertCircle, FiStar, FiSend } from "react-icons/fi";
 
 export function Footer({ stars }: { stars: number | null }) {
   const handleShare = async () => {
-    const url = "https://ccw-quiz.vercel.app";
+    const url = "https://ccw-quiz-cet.vercel.app";
     if (navigator.share) {
       await navigator.share({ title: "CCW Quiz Platform", text: "Practice core CS domains with CCW Quiz Platform", url });
     } else {
