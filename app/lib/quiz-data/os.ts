@@ -590,8 +590,8 @@ export const osQuestions: QuizQuestion[] = [
             "Deadlock is avoided by resource ordering",
             "Deadlock is ignored"
         ],
-        answerIndex: 2,
-        explanation: "Deadlock-free systems use prevention/avoidance strategies such as resource ordering.",
+        answerIndex: 0,
+        explanation: "A deadlock-free system guarantees that deadlock can never occur — through prevention or avoidance. Option (C) describes one specific avoidance method, not the defining property.",
         references: [{ label: "Deadlock Prevention", url: "https://en.wikipedia.org/wiki/Deadlock" }],
     },
     {
@@ -1390,9 +1390,9 @@ export const osQuestions: QuizQuestion[] = [
         topic: "os",
         prompt: "In a system with n CPUs, the maximum number of processes that can exist in the Ready state is:",
         options: ["Independent of n", "2n", "n²", "n"],
-        answerIndex: 3,
+        answerIndex: 0,
         explanation:
-            "At any instant, at most n processes can be running (one per CPU); all remaining ready processes wait in the ready queue, which is bounded by n in the maximum running sense.",
+            "The Ready queue holds processes waiting for CPU allocation. Its size is limited only by system memory/process table capacity, not by the number of CPUs. Only the Running state is bounded by n (one process per CPU at any instant).",
         references: [
             { label: "Wikipedia: Process State", url: "https://en.wikipedia.org/wiki/Process_state" },
         ],

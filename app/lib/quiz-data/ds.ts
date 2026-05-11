@@ -1467,7 +1467,7 @@ export const dsQuestions: QuizQuestion[] = [
         options: ["1", "2", "3", "4"],
         answerIndex: 1,
         explanation:
-            "A priority queue can be implemented using 2 queues — one for elements and one for priority ordering.",
+            "A priority queue can be implemented with 2 queues: one per priority level. Items enqueue into their corresponding priority queue, and dequeue always takes from the highest-priority non-empty queue. More priority levels would require more queues, but 2 is the minimum to demonstrate priority ordering.",
         references: [
             { label: "Wikipedia: Priority Queue", url: "https://en.wikipedia.org/wiki/Priority_queue" },
         ],
