@@ -368,12 +368,12 @@ export const coaQuestions: QuizQuestion[] = [
         id: "coa-30",
         topic: "coa",
         prompt: "Memories that retain their state as long as power is applied are known as:",
-        options: ["Dynamic", "Static", "SRAM", "DRAM"],
-        answerIndex: 1,
+        options: ["Dynamic", "Static", "Volatile", "DRAM"],
+        answerIndex: 2,
         explanation:
-            "Static memories (SRAM) use flip-flops to hold data and retain state as long as power is supplied, without needing periodic refresh.",
+            "Volatile memory retains data as long as power is supplied and loses it when power is removed. This includes both SRAM (static, no refresh needed) and DRAM (dynamic, needs refresh). In contrast, non-volatile memory like ROM retains data even without power. 'Static' is a narrower term describing only SRAM, while 'volatile' is the correct general classification for all RAM.",
         references: [
-            { label: "Wikipedia: Static Random-Access Memory", url: "https://en.wikipedia.org/wiki/Static_random-access_memory" },
+            { label: "Wikipedia: Volatile Memory", url: "https://en.wikipedia.org/wiki/Volatile_memory" },
         ],
     },
     {
@@ -467,7 +467,7 @@ export const coaQuestions: QuizQuestion[] = [
         options: ["19200 MB/s", "9200 MB/s", "192000 MB/s", "920 MB/s"],
         answerIndex: 0,
         explanation:
-            "Modern DDR system RAM bandwidth is approximately 19200 MB/s (e.g., DDR4-2400 dual channel provides around 38 GB/s, single channel ~19 GB/s).",
+            "Bandwidth = data rate × bus width. For DDR4-2400: 2400 MT/s × 8 bytes (64-bit bus) = 19200 MB/s. DDR5 and higher-end DDR4 modules can reach higher, but ~19200 MB/s is the approximate baseline for modern single-channel system RAM.",
         references: [
             { label: "Wikipedia: DDR4 SDRAM", url: "https://en.wikipedia.org/wiki/DDR4_SDRAM" },
         ],
@@ -633,7 +633,7 @@ export const coaQuestions: QuizQuestion[] = [
         options: ["1 Kbit", "2 Kbits", "4 Kbits", "8 Kbits"],
         answerIndex: 1,
         explanation:
-            "A 4-bit multiplier has 8 input bits (two 4-bit operands), giving 2^8 = 256 addresses × 8 output bits = 2048 bits = 2 Kbits of ROM.",
+            "ROM implements a lookup table: inputs form the address, outputs are the stored product. Two 4-bit operands → 8 address bits → 2^8 = 256 words. The product of 4-bit numbers (max 15×15=225) needs 8 bits. ROM size = 256 words × 8 bits = 2048 bits = 2 Kbits.",
         references: [
             { label: "Wikipedia: Read-Only Memory", url: "https://en.wikipedia.org/wiki/Read-only_memory" },
         ],
@@ -1004,7 +1004,7 @@ export const coaQuestions: QuizQuestion[] = [
         options: ["Instruction fetch", "Operand fetch", "Conditional branch", "Initiation of interrupt service"],
         answerIndex: 3,
         explanation:
-            "Saving the PC (return address) to memory and loading a new address into PC and MAR describes the initiation of an interrupt service routine.",
+            "The sequence saves PC (return address) to memory, loads X into MAR, and loads Y into PC — this is the initiation of an interrupt service routine. Instruction fetch would load from [PC] into IR. Operand fetch would read from an address in the instruction. Conditional branch would only update PC based on a condition flag.",
         references: [
             { label: "Wikipedia: Interrupt Handler", url: "https://en.wikipedia.org/wiki/Interrupt_handler" },
         ],
