@@ -1508,4 +1508,136 @@ export const dsQuestions: QuizQuestion[] = [
             { label: "Wikipedia: Queue Operations", url: "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)" },
         ],
     },
+
+    // CCW 2024 PYQs —— DS (questions ccw24-21 to ccw24-30)
+    {
+        id: "ccw24-21",
+        topic: "ds",
+        prompt: "Convert the infix expression (A + B ∧ D)/(E − F) + G into its equivalent postfix expression.",
+        options: ["ABD∧+EF−/G+", "ABD+∧EF−/G+", "ABD∧+EF/−G+", "ABDEF+∧/−G+"],
+        answerIndex: 0,
+        explanation:
+            "Applying precedence (∧ > * > + and left-to-right associativity): A+B∧D becomes ABD∧+, divided by (E−F) gives ABD∧+EF−/, then +G yields ABD∧+EF−/G+.",
+        references: [
+            { label: "Wikipedia: Reverse Polish Notation", url: "https://en.wikipedia.org/wiki/Reverse_Polish_notation" },
+        ],
+    },
+    {
+        id: "ccw24-22",
+        topic: "ds",
+        prompt: "The result of preorder traversal of a tree is the same as:",
+        options: ["Depth-first order", "Breadth-first search", "Topological order", "Linear order"],
+        answerIndex: 0,
+        explanation:
+            "Preorder traversal visits a node before its children, which follows depth-first order (root → left → right).",
+        references: [
+            { label: "Wikipedia: Tree Traversal", url: "https://en.wikipedia.org/wiki/Tree_traversal" },
+        ],
+    },
+    {
+        id: "ccw24-23",
+        topic: "ds",
+        prompt: "Queues serve a major role in:",
+        options: [
+            "Simulation of recursion",
+            "Simulation of arbitrary linked list",
+            "Simulation of limited resource allocation",
+            "Simulation of heap sort",
+        ],
+        answerIndex: 2,
+        explanation:
+            "Queues model waiting lines for limited resources — processes, I/O requests, print jobs — where FIFO ordering fairly allocates a constrained resource.",
+        references: [
+            { label: "Wikipedia: Queue (Abstract Data Type)", url: "https://en.wikipedia.org/wiki/Queue_(abstract_data_type)" },
+        ],
+    },
+    {
+        id: "ccw24-24",
+        topic: "ds",
+        prompt: "In the worst case, the number of comparisons needed to search a singly linked list of length n for a given element is:",
+        options: ["log 2n", "n/2", "log 2n − 1", "n"],
+        answerIndex: 3,
+        explanation:
+            "In the worst case (element absent or at the tail), every node must be visited, requiring n comparisons.",
+        references: [
+            { label: "Wikipedia: Linked List", url: "https://en.wikipedia.org/wiki/Linked_list" },
+        ],
+    },
+    {
+        id: "ccw24-25",
+        topic: "ds",
+        prompt: "If several elements are competing for the same bucket in a hash table, what is it called?",
+        options: ["Diffusion", "Replication", "Collision", "Duplication"],
+        answerIndex: 2,
+        explanation:
+            "A hash collision occurs when two or more distinct keys hash to the same bucket index in a hash table.",
+        references: [
+            { label: "Wikipedia: Hash Collision", url: "https://en.wikipedia.org/wiki/Hash_collision" },
+        ],
+    },
+    {
+        id: "ccw24-26",
+        topic: "ds",
+        prompt: "What is the number of edges present in a complete graph having n vertices?",
+        options: ["n*(n+1)/2", "n*(n−1)/2", "n", "Information given is insufficient"],
+        answerIndex: 1,
+        explanation:
+            "In a complete undirected graph, every vertex connects to every other vertex: edges = n(n−1)/2.",
+        references: [
+            { label: "Wikipedia: Complete Graph", url: "https://en.wikipedia.org/wiki/Complete_graph" },
+        ],
+    },
+    {
+        id: "ccw24-27",
+        topic: "ds",
+        prompt: "Which of the following is NOT an in-place sorting algorithm?",
+        options: ["Selection sort", "Heap sort", "Quick sort", "Merge sort"],
+        answerIndex: 3,
+        explanation:
+            "Merge sort requires O(n) auxiliary space for the temporary arrays used during merging, making it not in-place.",
+        references: [
+            { label: "Wikipedia: Merge Sort", url: "https://en.wikipedia.org/wiki/Merge_sort" },
+        ],
+    },
+    {
+        id: "ccw24-28",
+        topic: "ds",
+        prompt: "The time complexity of heap sort in the worst case is:",
+        options: ["O(log n)", "O(n)", "O(n log n)", "O(n²)"],
+        answerIndex: 2,
+        explanation:
+            "Heap sort builds a heap in O(n) and performs n extract-max operations each costing O(log n), giving O(n log n) overall.",
+        references: [
+            { label: "Wikipedia: Heapsort", url: "https://en.wikipedia.org/wiki/Heapsort" },
+        ],
+    },
+    {
+        id: "ccw24-29",
+        topic: "ds",
+        prompt: "After quicksort's first partition the array is [2, 5, 1, 7, 9, 12, 11, 10]. Which statement about the pivot is correct?",
+        options: [
+            "The pivot could be either the 7 or the 9",
+            "The pivot could be the 7, but it is not the 9",
+            "The pivot is not the 7, but it could be the 9",
+            "Neither the 7 nor the 9 is the pivot",
+        ],
+        answerIndex: 0,
+        explanation:
+            "After partitioning, the pivot is in its final sorted position. Both 7 (index 3) and 9 (index 4) satisfy the condition that all elements to their left are smaller and all to their right are larger.",
+        references: [
+            { label: "Wikipedia: Quicksort", url: "https://en.wikipedia.org/wiki/Quicksort" },
+        ],
+    },
+    {
+        id: "ccw24-30",
+        topic: "ds",
+        prompt: "When swap operations are very costly, which sorting algorithm minimises the number of swaps?",
+        options: ["Heap Sort", "Selection Sort", "Insertion Sort", "Merge Sort"],
+        answerIndex: 1,
+        explanation:
+            "Selection sort makes at most n−1 swaps regardless of input, as it places exactly one element in its final position per pass.",
+        references: [
+            { label: "Wikipedia: Selection Sort", url: "https://en.wikipedia.org/wiki/Selection_sort" },
+        ],
+    },
 ];

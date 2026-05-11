@@ -92,6 +92,9 @@ export default function Home() {
             <p className="mt-2 max-w-2xl text-base text-muted sm:text-lg font-nunito">
               Practice OOP, Operating Systems, Data Structures, Mathematics, and more.
             </p>
+            <p className="max-w-2xl text-sm text-muted sm:text-base font-geist-sans font-bold">
+              New Feature - <span className="text-foreground">Ask Google :)</span>
+            </p>
             <p className="mt-2 text-sm text-muted font-geist-sans">
               {totalQuestions} curated questions across {Object.keys(topicLabels).length} core domains
             </p>

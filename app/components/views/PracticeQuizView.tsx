@@ -73,7 +73,7 @@ export function PracticeQuizView({
           <button
             type="button"
             onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(question.prompt)}`, "_blank", "noopener")}
-            className="flex items-center gap-1 rounded-md border border-border/50 px-2 py-1 text-xs transition hover:border-foreground/40 hover:text-foreground"
+            className="flex items-center gap-1 rounded-md border border-[#a855f7]/40 bg-[#a855f7]/10 px-2 py-1 text-xs text-[#a855f7] transition hover:border-[#a855f7]/70 hover:bg-[#a855f7]/20"
             title="Search on Google"
           >
             <FiExternalLink size={12} />

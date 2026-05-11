@@ -50,21 +50,21 @@ Practice or take timed exams across 10 core computer science domains (Discrete M
 
 ## Domains
 
-11 question banks with curated MCQs (494 questions total):
+11 question banks with curated MCQs (543 questions total):
 
 | Topic | File |
 |-------|------|
 | Object-Oriented Programming | `oop.ts` (50) |
-| Operating Systems | `os.ts` (105) |
-| Data Structures | `ds.ts` (125) |
-| Core CS | `core.ts` (21) |
+| Operating Systems | `os.ts` (115) |
+| Data Structures | `ds.ts` (135) |
+| Core CS | `core.ts` (31) |
 | Mathematics *(Discrete Mathematics merged in)* | `maths.ts` (20) |
 | Vectors | `vectors.ts` (10) |
 | Matrices | `matrices.ts` (10) |
 | Differential Equations | `differential.ts` (10) |
-| Formal Language & Automata Theory | `automata.ts` (60) |
+| Formal Language & Automata Theory | `automata.ts` (70) |
 | Computer Graphics | `graphics.ts` (10) |
-| Computer Organization & Architecture | `coa.ts` (73) |
+| Computer Organization & Architecture | `coa.ts` (82) |
 
 ## Project Structure
 

@@ -932,4 +932,134 @@ export const coaQuestions: QuizQuestion[] = [
             { label: "Wikipedia: CPU Cache", url: "https://en.wikipedia.org/wiki/CPU_cache" },
         ],
     },
+
+    // CCW 2024 PYQs —— COA (questions ccw24-31 to ccw24-39)
+    {
+        id: "ccw24-31",
+        topic: "coa",
+        prompt: "Match addressing modes to their usage: Immediate→?, Direct→Local Variables, Indirect→Pointer, Index→Arrays, Base→Relocatable, Relative→Locality of reference.",
+        options: [
+            "Immediate → Constant Operands",
+            "Immediate → Local Variables",
+            "Immediate → Arrays",
+            "Immediate → Relocatable programs",
+        ],
+        answerIndex: 0,
+        explanation:
+            "Immediate addressing mode embeds the operand value directly in the instruction as a constant — e.g., ADD R1, #5 adds the constant 5.",
+        references: [
+            { label: "Wikipedia: Addressing Mode", url: "https://en.wikipedia.org/wiki/Addressing_mode" },
+        ],
+    },
+    {
+        id: "ccw24-32",
+        topic: "coa",
+        prompt: "The search concept used in associative memory is:",
+        options: ["Parallel search", "Sequential search", "Binary search", "Selection search"],
+        answerIndex: 0,
+        explanation:
+            "Associative memory (Content-Addressable Memory) searches all locations simultaneously in parallel based on content, not address.",
+        references: [
+            { label: "Wikipedia: Content-Addressable Memory", url: "https://en.wikipedia.org/wiki/Content-addressable_memory" },
+        ],
+    },
+    {
+        id: "ccw24-33",
+        topic: "coa",
+        prompt: "Memory interleaving is done to:",
+        options: [
+            "Increase the amount of logical memory",
+            "Reduce memory access time",
+            "Simplify memory interfacing",
+            "Reduce page faults",
+        ],
+        answerIndex: 1,
+        explanation:
+            "Memory interleaving spreads data across multiple memory banks that can be accessed concurrently, reducing effective memory access latency.",
+        references: [
+            { label: "Wikipedia: Interleaved Memory", url: "https://en.wikipedia.org/wiki/Interleaved_memory" },
+        ],
+    },
+    {
+        id: "ccw24-34",
+        topic: "coa",
+        prompt: "Which DMA transfer mode and interrupt handling combination enables the highest I/O bandwidth?",
+        options: [
+            "Transparent DMA and Polling interrupts",
+            "Cycle-Stealing and Vectored interrupts",
+            "Block Transfer and Vectored interrupts",
+            "Block Transfer and Polling interrupts",
+        ],
+        answerIndex: 2,
+        explanation:
+            "Block Transfer DMA moves entire data blocks without CPU intervention, and vectored interrupts allow fast, direct dispatch to the correct handler — together maximising I/O throughput.",
+        references: [
+            { label: "Wikipedia: Direct Memory Access", url: "https://en.wikipedia.org/wiki/Direct_memory_access" },
+        ],
+    },
+    {
+        id: "ccw24-35",
+        topic: "coa",
+        prompt: "Given micro-operations: MBR←PC, MAR←X, PC←Y, Memory←MBR — what operation does this sequence perform?",
+        options: ["Instruction fetch", "Operand fetch", "Conditional branch", "Initiation of interrupt service"],
+        answerIndex: 3,
+        explanation:
+            "Saving the PC (return address) to memory and loading a new address into PC and MAR describes the initiation of an interrupt service routine.",
+        references: [
+            { label: "Wikipedia: Interrupt Handler", url: "https://en.wikipedia.org/wiki/Interrupt_handler" },
+        ],
+    },
+    {
+        id: "ccw24-36",
+        topic: "coa",
+        prompt: "Register renaming is done in pipelined processors:",
+        options: [
+            "As an alternative to register allocation at compile time",
+            "For efficient access to function parameters and local variables",
+            "To handle certain kinds of hazards",
+            "As part of address translation",
+        ],
+        answerIndex: 2,
+        explanation:
+            "Register renaming eliminates WAR and WAW data hazards by mapping architectural registers to a larger set of physical registers.",
+        references: [
+            { label: "Wikipedia: Register Renaming", url: "https://en.wikipedia.org/wiki/Register_renaming" },
+        ],
+    },
+    {
+        id: "ccw24-37",
+        topic: "coa",
+        prompt: "A cache has 64 KB capacity, 128-byte lines, and is 4-way set associative with 32-bit addresses. How many lines (blocks) does the cache have?",
+        options: ["64", "128", "256", "32"],
+        answerIndex: 1,
+        explanation:
+            "Total lines = cache size / line size = 64 KB / 128 B = 512 lines. Sets = 512 / 4 = 128.",
+        references: [
+            { label: "Wikipedia: CPU Cache", url: "https://en.wikipedia.org/wiki/CPU_cache" },
+        ],
+    },
+    {
+        id: "ccw24-38",
+        topic: "coa",
+        prompt: "A machine with N different opcodes can contain how many different sequences of micro-operations?",
+        options: ["2^N", "N^N", "N²", "N"],
+        answerIndex: 3,
+        explanation:
+            "Each of the N opcodes maps to exactly one sequence of micro-operations, so there are N different micro-operation sequences.",
+        references: [
+            { label: "Wikipedia: Microprogram", url: "https://en.wikipedia.org/wiki/Microprogram" },
+        ],
+    },
+    {
+        id: "ccw24-39",
+        topic: "coa",
+        prompt: "How many 32K×1 RAM chips are needed to provide a memory capacity of 256K-bytes?",
+        options: ["8", "32", "64", "128"],
+        answerIndex: 2,
+        explanation:
+            "Each chip provides 32K×1 bit = 32 Kbits. 256 KB = 2048 Kbits. Chips needed = 2048 / 32 = 64.",
+        references: [
+            { label: "Wikipedia: RAM", url: "https://en.wikipedia.org/wiki/Random-access_memory" },
+        ],
+    },
 ];

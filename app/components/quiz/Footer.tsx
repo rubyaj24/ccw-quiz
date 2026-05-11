@@ -1,10 +1,26 @@
 "use client";
 
-import { FiGithub, FiAlertCircle, FiStar } from "react-icons/fi";
+import { FiGithub, FiAlertCircle, FiStar, FiSend } from "react-icons/fi";
 
 export function Footer({ stars }: { stars: number | null }) {
+  const handleShare = async () => {
+    const url = "https://ccw-quiz.vercel.app";
+    if (navigator.share) {
+      await navigator.share({ title: "CCW Quiz Platform", text: "Practice core CS domains with CCW Quiz Platform", url });
+    } else {
+      await navigator.clipboard.writeText(url);
+    }
+  };
+
   return (
     <footer className="mt-10 flex items-center justify-center gap-4 text-sm text-muted">
+      <button
+        className="flex items-center gap-1.5 underline-offset-2 hover:text-foreground hover:underline transition-colors"
+        onClick={handleShare}
+      >
+        <FiSend size={14} />
+        Share
+      </button>
       <button
         className="flex items-center gap-1.5 underline-offset-2 hover:text-foreground hover:underline transition-colors"
         onClick={() => window.open("https://github.com/rubyaj24/ccw-quiz", "_blank", "noopener,noreferrer")}

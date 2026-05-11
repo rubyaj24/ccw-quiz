@@ -2,19 +2,19 @@ import type { Topic, QuizQuestion } from "./quiz-data/types";
 
 export const topicQuestionCounts: Record<Topic, number> = {
   oop: 50,
-  os: 105,
-  ds: 125,
-  core: 21,
+  os: 115,
+  ds: 135,
+  core: 31,
   maths: 20,
   vectors: 10,
   matrices: 10,
   differential: 10,
   graphics: 10,
-  automata: 60,
-  coa: 73,
+  automata: 70,
+  coa: 82,
 };
 
-export const totalQuestions = 494;
+export const totalQuestions = 543;
 
 const questionBankLoaders: Record<Topic, () => Promise<QuizQuestion[]>> = {
   oop: () => import("./quiz-data/oop").then((m) => m.oopQuestions),

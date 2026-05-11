@@ -241,4 +241,146 @@ export const coreQuestions: QuizQuestion[] = [
             { label: "ALU", url: "https://en.wikipedia.org/wiki/Arithmetic_logic_unit" },
         ],
     },
+
+    // CCW 2024 PYQs —— DBMS (questions ccw24-11 to ccw24-20)
+    {
+        id: "ccw24-11",
+        topic: "core",
+        prompt: "Which of the following properties is preserved during the execution of a transaction in isolation?",
+        options: ["Atomicity", "Isolation", "Durability", "Consistency"],
+        answerIndex: 3,
+        explanation:
+            "Isolation ensures concurrent transactions produce the same result as if they ran serially, thereby preserving database Consistency.",
+        references: [
+            { label: "Wikipedia: ACID", url: "https://en.wikipedia.org/wiki/ACID" },
+        ],
+    },
+    {
+        id: "ccw24-12",
+        topic: "core",
+        prompt: "Given the relation instance with attributes X, Y, Z and tuples (1,4,2),(1,5,3),(1,6,3),(3,2,2), which functional dependency holds?",
+        options: ["XY→Z and Z→Y", "YZ→X and Y→Z", "YZ→X and X→Z", "XZ→Y and Y→X"],
+        answerIndex: 0,
+        explanation:
+            "From the data, the pair (X,Y) uniquely determines Z (XY→Z), and each Z value maps to a unique Y value (Z→Y).",
+        references: [
+            { label: "Wikipedia: Functional Dependency", url: "https://en.wikipedia.org/wiki/Functional_dependency" },
+        ],
+    },
+    {
+        id: "ccw24-13",
+        topic: "core",
+        prompt: "Which of the following statements about normalization is FALSE?",
+        options: [
+            "A relation in which all keys have only a single attribute is in 2NF",
+            "A relation that has two attributes is in BCNF",
+            "A prime attribute can depend transitively on any key in a relation in BCNF",
+            "A prime attribute can depend transitively on any key in a relation in 3NF",
+        ],
+        answerIndex: 2,
+        explanation:
+            "BCNF is stricter than 3NF. In BCNF, every determinant must be a superkey, so transitive dependency of a prime attribute on a key violates BCNF — making statement C false.",
+        references: [
+            { label: "Wikipedia: Boyce–Codd Normal Form", url: "https://en.wikipedia.org/wiki/Boyce%E2%80%93Codd_normal_form" },
+        ],
+    },
+    {
+        id: "ccw24-14",
+        topic: "core",
+        prompt: "Which query always gives the same answer as: SELECT * FROM R WHERE a IN (SELECT S.a FROM S)?",
+        options: [
+            "SELECT R.* FROM R, S WHERE R.a=S.a",
+            "SELECT DISTINCT R.* FROM R, S WHERE R.a=S.a",
+            "SELECT R.* FROM R, (SELECT DISTINCT a FROM S) AS S1 WHERE R.a=S1.a",
+            "SELECT R.* FROM R, S WHERE R.a=S.a AND is unique R",
+        ],
+        answerIndex: 2,
+        explanation:
+            "Using a subquery that selects DISTINCT values from S avoids duplicate rows from joins when S has multiple matching tuples, matching the IN semantics exactly.",
+        references: [
+            { label: "Wikipedia: SQL Subquery", url: "https://en.wikipedia.org/wiki/SQL#Queries" },
+        ],
+    },
+    {
+        id: "ccw24-15",
+        topic: "core",
+        prompt: "The term for information that describes what type of data is available in a database is:",
+        options: ["Data dictionary", "Data repository", "Index data", "Metadata"],
+        answerIndex: 3,
+        explanation:
+            "Metadata is data that describes other data — its structure, type, format, and constraints — giving context about the database contents.",
+        references: [
+            { label: "Wikipedia: Metadata", url: "https://en.wikipedia.org/wiki/Metadata" },
+        ],
+    },
+    {
+        id: "ccw24-16",
+        topic: "core",
+        prompt: "For the query SELECT P1.address FROM Cinema P1, which clause always finds theaters with maximum capacity?",
+        options: [
+            "WHERE P1.capacity >= ALL (SELECT P2.capacity FROM Cinema P2)",
+            "WHERE P1.capacity >= ANY (SELECT P2.capacity FROM Cinema P2)",
+            "WHERE P1.capacity > ALL (SELECT max(P2.capacity) FROM Cinema P2)",
+            "WHERE P1.capacity > ANY (SELECT max(P2.capacity) FROM Cinema P2)",
+        ],
+        answerIndex: 0,
+        explanation:
+            "'>= ALL' ensures the capacity is at least as large as every other capacity in the table, i.e. it selects only the maximum.",
+        references: [
+            { label: "Wikipedia: SQL", url: "https://en.wikipedia.org/wiki/SQL" },
+        ],
+    },
+    {
+        id: "ccw24-17",
+        topic: "core",
+        prompt: "Which of the following statements about database transaction schedules is/are TRUE? I. Strict 2PL generates conflict-serializable, recoverable schedules. II. Timestamp-ordering with Thomas Write Rule can generate view-serializable but not conflict-serializable schedules.",
+        options: ["Both I and II", "I only", "II only", "Neither I nor II"],
+        answerIndex: 0,
+        explanation:
+            "Both statements are correct. Strict 2PL guarantees conflict serializability and recoverability. The Thomas Write Rule allows certain non-conflict-serializable but view-serializable schedules.",
+        references: [
+            { label: "Wikipedia: Two-Phase Locking", url: "https://en.wikipedia.org/wiki/Two-phase_locking" },
+        ],
+    },
+    {
+        id: "ccw24-18",
+        topic: "core",
+        prompt: "B+ Trees are considered balanced because:",
+        options: [
+            "The lengths of the paths from the root to all leaf nodes are all equal",
+            "The lengths of the paths from the root to all leaf nodes differ by at most 1",
+            "The number of children of any two non-leaf sibling nodes differ by at most 1",
+            "The number of records in any two leaf nodes differ by at most 1",
+        ],
+        answerIndex: 0,
+        explanation:
+            "In a B+ Tree, all leaf nodes are at the same depth, so every path from root to leaf has identical length — this is what makes it balanced.",
+        references: [
+            { label: "Wikipedia: B+ Tree", url: "https://en.wikipedia.org/wiki/B%2B_tree" },
+        ],
+    },
+    {
+        id: "ccw24-19",
+        topic: "core",
+        prompt: "Which of the following relational query languages have the same expressive power? I) Relational algebra II) Tuple relational calculus (safe) III) Domain relational calculus (safe)",
+        options: ["II and III only", "I and II only", "I and III only", "I, II and III"],
+        answerIndex: 3,
+        explanation:
+            "All three — relational algebra, safe tuple relational calculus, and safe domain relational calculus — are equally expressive and can express the same set of queries.",
+        references: [
+            { label: "Wikipedia: Relational Algebra", url: "https://en.wikipedia.org/wiki/Relational_algebra" },
+        ],
+    },
+    {
+        id: "ccw24-20",
+        topic: "core",
+        prompt: "An entity in A is associated with at most one entity in B. An entity in B can be associated with any number of entities in A. What is this relationship?",
+        options: ["One-to-many", "One-to-one", "Many-to-many", "Many-to-one"],
+        answerIndex: 3,
+        explanation:
+            "Many entities in A map to at most one entity in B — this is a Many-to-one relationship from A's perspective.",
+        references: [
+            { label: "Wikipedia: Entity–Relationship Model", url: "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model" },
+        ],
+    },
 ];

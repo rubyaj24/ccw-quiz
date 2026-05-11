@@ -1260,4 +1260,141 @@ export const osQuestions: QuizQuestion[] = [
         },
     ],
 },
+
+    // CCW 2024 PYQs —— OS (questions ccw24-1 to ccw24-10)
+    {
+        id: "ccw24-1",
+        topic: "os",
+        prompt: "In a timesharing OS, when the time slot assigned to a process is completed, the process switches to which state?",
+        options: ["Suspended state", "Terminated state", "Ready state", "Blocked state"],
+        answerIndex: 2,
+        explanation:
+            "When a time quantum expires, the running process is preempted and moved back to the Ready queue to wait for its next turn on the CPU.",
+        references: [
+            { label: "Wikipedia: Preemption (Computing)", url: "https://en.wikipedia.org/wiki/Preemption_(computing)" },
+        ],
+    },
+    {
+        id: "ccw24-2",
+        topic: "os",
+        prompt: "The dirty bit is used to indicate which of the following?",
+        options: [
+            "A page fault has occurred",
+            "A page has corrupted data",
+            "A page has been modified after being loaded into cache",
+            "An illegal access of page",
+        ],
+        answerIndex: 2,
+        explanation:
+            "The dirty bit (modified bit) is set when a page or cache block has been written to, indicating it must be written back to memory before eviction.",
+        references: [
+            { label: "Wikipedia: Dirty Bit", url: "https://en.wikipedia.org/wiki/Dirty_bit" },
+        ],
+    },
+    {
+        id: "ccw24-3",
+        topic: "os",
+        prompt: "What is a short-term scheduler?",
+        options: [
+            "It selects which process has to be brought into the ready queue",
+            "It selects which process has to be executed next and allocates CPU",
+            "It selects which process to remove from memory by swapping",
+            "None of the mentioned",
+        ],
+        answerIndex: 1,
+        explanation:
+            "The short-term (CPU) scheduler picks the next process from the ready queue and dispatches it to the CPU for execution.",
+        references: [
+            { label: "Wikipedia: Scheduling (Computing)", url: "https://en.wikipedia.org/wiki/Scheduling_(computing)" },
+        ],
+    },
+    {
+        id: "ccw24-4",
+        topic: "os",
+        prompt: "If a process fails, most operating systems write the error information to a:",
+        options: ["New file", "Another running process", "Log file", "None of the mentioned"],
+        answerIndex: 2,
+        explanation:
+            "Operating systems write error and crash information to a log file so administrators can diagnose failures after the fact.",
+        references: [
+            { label: "Wikipedia: System Log", url: "https://en.wikipedia.org/wiki/Syslog" },
+        ],
+    },
+    {
+        id: "ccw24-5",
+        topic: "os",
+        prompt: "If a process is executing in its critical section, no other processes can execute in their critical section. What is this condition called?",
+        options: ["Mutual exclusion", "Critical exclusion", "Synchronous exclusion", "Asynchronous exclusion"],
+        answerIndex: 0,
+        explanation:
+            "Mutual exclusion guarantees that only one process at a time can be inside its critical section, preventing race conditions.",
+        references: [
+            { label: "Wikipedia: Mutual Exclusion", url: "https://en.wikipedia.org/wiki/Mutual_exclusion" },
+        ],
+    },
+    {
+        id: "ccw24-6",
+        topic: "os",
+        prompt: "When are the register context and stack of a thread deallocated?",
+        options: [
+            "When the thread terminates",
+            "When the thread blocks",
+            "When the thread unblocks",
+            "When the thread spawns",
+        ],
+        answerIndex: 0,
+        explanation:
+            "A thread's register context and stack are only freed when the thread terminates, as they are needed throughout the thread's lifetime.",
+        references: [
+            { label: "Wikipedia: Thread (Computing)", url: "https://en.wikipedia.org/wiki/Thread_(computing)" },
+        ],
+    },
+    {
+        id: "ccw24-7",
+        topic: "os",
+        prompt: "Out of these page replacement algorithms, which one suffers from Belady's anomaly?",
+        options: ["LRU", "FIFO", "Both LRU and FIFO", "Optimal Page Replacement"],
+        answerIndex: 1,
+        explanation:
+            "Belady's anomaly affects FIFO: increasing the number of page frames can paradoxically increase the number of page faults.",
+        references: [
+            { label: "Wikipedia: Belady's Anomaly", url: "https://en.wikipedia.org/wiki/B%C3%A9l%C3%A1dy%27s_anomaly" },
+        ],
+    },
+    {
+        id: "ccw24-8",
+        topic: "os",
+        prompt: "Which one of these is NOT shared by threads of the same process?",
+        options: ["Address Space", "Stack", "Message Queue", "File Descriptor Table"],
+        answerIndex: 1,
+        explanation:
+            "Each thread has its own private stack and register context. Address space, message queues, and file descriptor tables are shared among threads of the same process.",
+        references: [
+            { label: "Wikipedia: Thread (Computing)", url: "https://en.wikipedia.org/wiki/Thread_(computing)" },
+        ],
+    },
+    {
+        id: "ccw24-9",
+        topic: "os",
+        prompt: "Which disk scheduling policy results in minimum head movement?",
+        options: ["Circular scan", "Elevator (SCAN)", "FCFS", "None of the above"],
+        answerIndex: 1,
+        explanation:
+            "The Elevator (SCAN) algorithm moves the disk head in one direction servicing all requests, then reverses, minimising total head movement.",
+        references: [
+            { label: "Wikipedia: Elevator Algorithm", url: "https://en.wikipedia.org/wiki/Elevator_algorithm" },
+        ],
+    },
+    {
+        id: "ccw24-10",
+        topic: "os",
+        prompt: "In a system with n CPUs, the maximum number of processes that can exist in the Ready state is:",
+        options: ["Independent of n", "2n", "n²", "n"],
+        answerIndex: 3,
+        explanation:
+            "At any instant, at most n processes can be running (one per CPU); all remaining ready processes wait in the ready queue, which is bounded by n in the maximum running sense.",
+        references: [
+            { label: "Wikipedia: Process State", url: "https://en.wikipedia.org/wiki/Process_state" },
+        ],
+    },
 ];
