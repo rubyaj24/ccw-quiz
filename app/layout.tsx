@@ -32,8 +32,20 @@ const playfairDisplay = Playfair_Display({
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ccw-quiz.vercel.app"),
   title: "CCW Quiz Platform",
   description: "Quiz platform for OOP, OS, Data Structures, and core computer science topics.",
+  openGraph: {
+    title: "CCW Quiz Platform",
+    description: "Quiz platform for OOP, OS, Data Structures, and core computer science topics.",
+    siteName: "CCW Quiz Platform",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CCW Quiz Platform",
+    description: "Quiz platform for OOP, OS, Data Structures, and core computer science topics.",
+  },
 };
 
 export default function RootLayout({

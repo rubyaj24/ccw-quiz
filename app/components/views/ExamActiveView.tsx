@@ -3,7 +3,7 @@
 import type { ExamQuestion } from "../../lib";
 import { topicLabels } from "../../lib";
 import { ExamPalette, ExamSlider, ShortcutHint } from "../quiz";
-import { FiChevronLeft, FiChevronRight, FiExternalLink, FiSend, FiX } from "react-icons/fi";
+import { FiChevronLeft, FiChevronRight, FiSend, FiX } from "react-icons/fi";
 
 export function ExamActiveView({
   question,
@@ -51,15 +51,6 @@ export function ExamActiveView({
           <span className="text-muted">{topicLabels[question.topic]}</span>
         </div>
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={() => window.open(`https://www.google.com/search?q=${encodeURIComponent(question.prompt)}`, "_blank", "noopener")}
-            className="flex items-center gap-1 rounded-md border border-border/50 px-2 py-1 text-xs text-muted transition hover:border-foreground/40 hover:text-foreground"
-            title="Search on Google"
-          >
-            <FiExternalLink size={12} />
-            Ask Google
-          </button>
           <span className="font-mono text-base font-semibold text-foreground">{examTimeLeftLabel}</span>
           <button
             type="button"

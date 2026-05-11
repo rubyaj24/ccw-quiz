@@ -110,8 +110,9 @@ export function PracticeCompleteView({
         </div>
       </div>
 
-      <div className="mt-5 grid gap-3">
-        {questions.map((q) => {
+      <h3 className="mb-3 mt-6 text-sm font-semibold text-muted">Answered Questions ({questions.filter((q) => selectedAnswers[q.id] !== undefined).length})</h3>
+      <div className="mt-3 grid gap-3">
+        {questions.filter((q) => selectedAnswers[q.id] !== undefined).map((q) => {
           const userAnswer = selectedAnswers[q.id];
           const isCorrect = userAnswer === q.answerIndex;
           return (
@@ -169,6 +170,11 @@ export function PracticeCompleteView({
             </article>
           );
         })}
+        {questions.filter((q) => selectedAnswers[q.id] === undefined).length > 0 && (
+          <p className="text-sm text-muted/50 text-center py-4">
+            {questions.filter((q) => selectedAnswers[q.id] === undefined).length} question{questions.filter((q) => selectedAnswers[q.id] === undefined).length > 1 ? "s" : ""} skipped — review answered questions above
+          </p>
+        )}
       </div>
 
       <div className="mt-6 flex gap-3">

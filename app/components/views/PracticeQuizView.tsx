@@ -3,7 +3,7 @@
 import type { QuizQuestion, Topic } from "../../lib";
 import { topicLabels } from "../../lib";
 import { QuestionContent, OptionButton, ExplanationBox, SubjectIcon, ShortcutHint } from "../quiz";
-import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiExternalLink, FiXCircle } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiExternalLink, FiXCircle, FiStopCircle } from "react-icons/fi";
 
 export function PracticeQuizView({
   question,
@@ -23,6 +23,7 @@ export function PracticeQuizView({
   onSelectAnswer,
   onCheck,
   onNext,
+  onEndQuiz,
   onChangeTopic,
   onToggleIssue,
   onDraftChange,
@@ -46,11 +47,12 @@ export function PracticeQuizView({
   onSelectAnswer: (id: string, index: number) => void;
   onCheck: () => void;
   onNext: () => void;
+  onEndQuiz: () => void;
   onChangeTopic: () => void;
   onToggleIssue: () => void;
   onDraftChange: (value: string) => void;
   onSubmitIssue: () => void;
-  desktopShortcuts?: { topics?: string; check?: string; next?: string };
+  desktopShortcuts?: { topics?: string; check?: string; next?: string; endQuiz?: string };
 }) {
   const optionLocked = revealMode === "instant" ? hasAnswered : hasChecked;
 
@@ -115,15 +117,26 @@ export function PracticeQuizView({
       )}
 
       <div className="mt-6 flex items-center justify-between">
-        <button
-          type="button"
-          onClick={onChangeTopic}
-          className="noise-btn flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 text-sm transition hover:border-foreground/40"
-          >
-            <FiArrowLeft size={16} />
-            Topics
-            {desktopShortcuts?.topics && <ShortcutHint keys={desktopShortcuts.topics} />}
-          </button>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onChangeTopic}
+            className="noise-btn flex items-center gap-1.5 rounded-lg border border-border px-4 py-2 text-sm transition hover:border-foreground/40"
+            >
+              <FiArrowLeft size={16} />
+              Topics
+              {desktopShortcuts?.topics && <ShortcutHint keys={desktopShortcuts.topics} />}
+            </button>
+            <button
+              type="button"
+              onClick={onEndQuiz}
+              className="noise-btn flex items-center gap-1.5 rounded-lg border border-border/60 px-4 py-2 text-sm text-muted transition hover:border-error/50 hover:text-error"
+            >
+              <FiStopCircle size={16} />
+              End Quiz
+              {desktopShortcuts?.endQuiz && <ShortcutHint keys={desktopShortcuts.endQuiz} />}
+            </button>
+          </div>
           <button
             type="button"
             onClick={revealMode === "check" && !hasChecked ? onCheck : onNext}

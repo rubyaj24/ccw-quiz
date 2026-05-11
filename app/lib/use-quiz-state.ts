@@ -72,6 +72,7 @@ export function useQuizState() {
   const [examConfigError, setExamConfigError] = useState<string | null>(null);
   const [repeatCooldownMinutes, setRepeatCooldownMinutes] = useState(720);
   const [questionRepeatState, setQuestionRepeatState] = useState<QuestionRepeatState>(emptyQuestionRepeatState());
+  const [reviewIndex, setReviewIndex] = useState(0);
   const [examIndicatorExpanded, setExamIndicatorExpanded] = useState(false);
   const [openIssueForm, setOpenIssueForm] = useState<Record<string, boolean>>({});
   const [issueDrafts, setIssueDrafts] = useState<Record<string, string>>({});
@@ -134,6 +135,13 @@ export function useQuizState() {
 
   const score = topicQuestions.reduce((t, q) => selectedAnswers[q.id] === q.answerIndex ? t + 1 : t, 0);
 
+  const reviewQuestions = useMemo(() =>
+    topicQuestions.filter((q) => selectedAnswers[q.id] !== undefined),
+    [topicQuestions, selectedAnswers],
+  );
+  const reviewCurrentQuestion = reviewQuestions[reviewIndex];
+  const reviewTotal = reviewQuestions.length;
+
   const examQuestions = useMemo(() => examSession?.questions ?? [], [examSession]);
   const examCurrentQuestion = examQuestions[currentIndex];
   const examCurrentSelectedAnswer = examCurrentQuestion ? examResponses[examCurrentQuestion.id] : undefined;
@@ -190,8 +198,33 @@ export function useQuizState() {
   };
 
   const goNext = () => {
-    if (currentIndex === topicQuestions.length - 1) { setQuizState("complete"); return; }
+    if (currentIndex === topicQuestions.length - 1) {
+      const answered = topicQuestions.filter((q) => selectedAnswers[q.id] !== undefined);
+      if (answered.length === 0) { setQuizState("complete"); return; }
+      setReviewIndex(0);
+      setQuizState("review");
+      return;
+    }
     setCurrentIndex((p) => p + 1);
+  };
+
+  const endQuiz = () => {
+    const answered = topicQuestions.filter((q) => selectedAnswers[q.id] !== undefined);
+    if (answered.length === 0) { setQuizState("complete"); return; }
+    setReviewIndex(0);
+    setQuizState("review");
+  };
+
+  const goToResults = () => {
+    setQuizState("complete");
+  };
+
+  const goToNextReview = () => {
+    if (reviewIndex < reviewTotal - 1) setReviewIndex((p) => p + 1);
+  };
+
+  const goToPreviousReview = () => {
+    if (reviewIndex > 0) setReviewIndex((p) => p - 1);
   };
 
   const resetQuiz = () => {
@@ -199,6 +232,7 @@ export function useQuizState() {
     setSelectedTopic(null);
     setTopicQuestions([]);
     setCurrentIndex(0);
+    setReviewIndex(0);
     setSelectedAnswers({});
     setCheckedQuestions({});
     setExamSession(null);
@@ -301,7 +335,7 @@ export function useQuizState() {
   };
 
   const actions: QuizActions = {
-    startQuiz, selectAnswer, checkAnswer, goNext, resetQuiz,
+    startQuiz, selectAnswer, checkAnswer, goNext, endQuiz, goToResults, goToNextReview, goToPreviousReview, resetQuiz,
     openExamInstructions, startExam, selectExamOption,
     goToNextExamQuestion, goToPreviousExamQuestion, submitExam,
     toggleIssueForm, updateIssueDraft, submitIssue,
@@ -320,7 +354,9 @@ export function useQuizState() {
     topicQuestionCounts, currentQuestion, currentSelectedAnswer,
     hasAnsweredCurrentQuestion, hasCheckedCurrentQuestion,
     shouldRevealCurrentReview, isCurrentAnswerCorrect,
-    score, examQuestions, examCurrentQuestion, examCurrentSelectedAnswer,
+    score,
+    reviewQuestions, reviewCurrentQuestion, reviewIndex, reviewTotal,
+    examQuestions, examCurrentQuestion, examCurrentSelectedAnswer,
     boundedQuestionCount, boundedTimeLimitMinutes, overallExamIntensity,
     activeRepeatBlockedCount, examAnsweredCount, examUnansweredCount,
     firstUnansweredIndex, examTopicBreakdown, examTimeLeftLabel,

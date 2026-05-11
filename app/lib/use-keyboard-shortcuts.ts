@@ -61,7 +61,7 @@ export function useKeyboardShortcuts(
         }
         map["Ctrl+Enter"] = { label: "Next question", action: () => actions.goNext() };
         map["Tab"] = { label: "Skip question", action: () => actions.goNext() };
-        map["Ctrl+Backspace"] = { label: "Quit quiz", action: () => actions.resetQuiz() };
+        map["Ctrl+Backspace"] = { label: "End quiz", action: () => actions.endQuiz() };
         return map;
       }
 
@@ -89,6 +89,14 @@ export function useKeyboardShortcuts(
         return {
           "Enter": { label: "Start exam", action: () => actions.startExam() },
           "Escape": { label: "Back to home", action: () => actions.resetQuiz() },
+        };
+
+      case "review":
+        return {
+          "ArrowLeft": { label: "Previous reviewed question", action: () => actions.goToPreviousReview() },
+          "ArrowRight": { label: "Next reviewed question", action: () => actions.goToNextReview() },
+          "Enter": { label: "View results", action: () => actions.goToResults() },
+          "t": { label: "Back to topics", action: () => actions.resetQuiz() },
         };
 
       case "complete":

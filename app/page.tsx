@@ -12,6 +12,7 @@ const TopicSelectView = dynamic(() => import("./components/views/TopicSelectView
 const ExamInstructionsView = dynamic(() => import("./components/views/ExamInstructionsView").then((m) => m.ExamInstructionsView), { ssr: false });
 const PracticeQuizView = dynamic(() => import("./components/views/PracticeQuizView").then((m) => m.PracticeQuizView), { ssr: false });
 const PracticeCompleteView = dynamic(() => import("./components/views/PracticeCompleteView").then((m) => m.PracticeCompleteView), { ssr: false });
+const ReviewView = dynamic(() => import("./components/views/ReviewView").then((m) => m.ReviewView), { ssr: false });
 const ExamActiveView = dynamic(() => import("./components/views/ExamActiveView").then((m) => m.ExamActiveView), { ssr: false });
 const ExamCompleteView = dynamic(() => import("./components/views/ExamCompleteView").then((m) => m.ExamCompleteView), { ssr: false });
 
@@ -47,13 +48,13 @@ export default function Home() {
       hasAnsweredCurrentQuestion: q.hasAnsweredCurrentQuestion,
       hasCheckedCurrentQuestion: q.hasCheckedCurrentQuestion,
       currentIndex: q.currentIndex,
-      totalQuestions: q.quizState === "exam-active" ? q.examQuestions.length : q.topicQuestions.length,
+      totalQuestions: q.quizState === "exam-active" ? q.examQuestions.length : q.quizState === "review" ? q.reviewTotal : q.topicQuestions.length,
       selectedTopic: q.selectedTopic,
       revealMode: q.revealMode,
     },
   );
 
-  const practiceShortcuts = isDesktop && q.quizState === "active" ? { topics: "Ctrl+Backspace" as const, next: "Ctrl+Enter" as const } : undefined;
+  const practiceShortcuts = isDesktop && q.quizState === "active" ? { endQuiz: "Ctrl+Backspace" as const, next: "Ctrl+Enter" as const } : undefined;
   const examShortcuts = isDesktop && q.quizState === "exam-active" ? { previous: "\u2190" as const, next: "Ctrl+Enter" as const, submit: "Enter" as const, quit: "Ctrl+Backspace" as const } : undefined;
 
   const themeMode = q.quizState === "select"
@@ -221,11 +222,26 @@ export default function Home() {
           onSelectAnswer={q.actions.selectAnswer}
           onCheck={q.actions.checkAnswer}
           onNext={q.actions.goNext}
+          onEndQuiz={q.actions.endQuiz}
           onChangeTopic={q.actions.resetQuiz}
           onToggleIssue={() => q.actions.toggleIssueForm(q.currentQuestion.id)}
           onDraftChange={(v) => q.actions.updateIssueDraft(q.currentQuestion.id, v)}
           onSubmitIssue={() => q.actions.submitIssue(q.currentQuestion)}
           desktopShortcuts={practiceShortcuts}
+        />
+      )}
+
+      {q.quizState === "review" && q.reviewCurrentQuestion && q.selectedTopic && (
+        <ReviewView
+          question={q.reviewCurrentQuestion}
+          currentIndex={q.reviewIndex}
+          totalQuestions={q.reviewTotal}
+          selectedTopic={q.selectedTopic}
+          selectedAnswers={q.selectedAnswers}
+          onPrevious={q.actions.goToPreviousReview}
+          onNext={q.actions.goToNextReview}
+          onViewResults={q.actions.goToResults}
+          onChangeTopic={q.actions.resetQuiz}
         />
       )}
 
@@ -276,6 +292,7 @@ export default function Home() {
           examTopicBreakdown={q.examTopicBreakdown}
           onBackToHome={q.actions.resetQuiz}
           onRetryExam={q.actions.openExamInstructions}
+          onPracticeTopic={q.actions.startQuiz}
         />
       )}
 

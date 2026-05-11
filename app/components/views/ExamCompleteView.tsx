@@ -2,7 +2,7 @@
 
 import type { ExamResult, Topic } from "../../lib";
 import { topicLabels } from "../../lib";
-import { FiHome, FiRefreshCw, FiClock, FiTarget } from "react-icons/fi";
+import { FiHome, FiRefreshCw, FiClock, FiTarget, FiBookOpen } from "react-icons/fi";
 
 function ScoreRing({ pct, size = 140, fontSize = 34 }: { pct: number; size?: number; fontSize?: number }) {
   const r = (size - 24) / 2;
@@ -65,11 +65,13 @@ export function ExamCompleteView({
   examTopicBreakdown,
   onBackToHome,
   onRetryExam,
+  onPracticeTopic,
 }: {
   examResult: ExamResult;
   examTopicBreakdown: Record<Topic, number>;
   onBackToHome: () => void;
   onRetryExam: () => void;
+  onPracticeTopic?: (topic: Topic) => void;
 }) {
   const topics = (Object.keys(examResult.topicWiseAccuracy) as Topic[]).filter(
     (t) => examTopicBreakdown[t] > 0
@@ -116,12 +118,25 @@ export function ExamCompleteView({
         <div className="mt-6 space-y-3">
           <h3 className="text-sm font-medium text-muted">Topic-wise Accuracy</h3>
           {topics.map((topic) => (
-            <AccuracyBar
-              key={topic}
-              label={topicLabels[topic]}
-              pct={examResult.topicWiseAccuracy[topic]}
-              count={examTopicBreakdown[topic]}
-            />
+            <div key={topic} className="flex items-center gap-3">
+              <div className="flex-1">
+                <AccuracyBar
+                  label={topicLabels[topic]}
+                  pct={examResult.topicWiseAccuracy[topic]}
+                  count={examTopicBreakdown[topic]}
+                />
+              </div>
+              {onPracticeTopic && (
+                <button
+                  type="button"
+                  onClick={() => onPracticeTopic(topic)}
+                  className="noise-btn shrink-0 rounded-lg border border-border/60 px-2.5 py-1.5 text-xs text-muted transition hover:border-foreground/40 hover:text-foreground"
+                  title={`Practice ${topicLabels[topic]}`}
+                >
+                  <FiBookOpen size={13} />
+                </button>
+              )}
+            </div>
           ))}
         </div>
       )}

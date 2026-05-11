@@ -2,7 +2,7 @@
 
 import type { Topic, QuizQuestion } from "./quiz-data/types";
 
-export type QuizState = "select" | "active" | "complete" | "exam-instructions" | "exam-active" | "exam-complete";
+export type QuizState = "select" | "active" | "review" | "complete" | "exam-instructions" | "exam-active" | "exam-complete";
 export type RevealMode = "check" | "instant";
 
 export type QuizActions = {
@@ -10,6 +10,10 @@ export type QuizActions = {
   selectAnswer: (questionId: string, optionIndex: number) => void;
   checkAnswer: () => void;
   goNext: () => void;
+  endQuiz: () => void;
+  goToResults: () => void;
+  goToNextReview: () => void;
+  goToPreviousReview: () => void;
   resetQuiz: () => void;
   openExamInstructions: () => void;
   startExam: () => Promise<void>;
