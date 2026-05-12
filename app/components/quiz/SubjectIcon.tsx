@@ -13,10 +13,12 @@ import {
   FiShare,
   FiImage,
   FiMonitor,
+  FiCalendar,
 } from "react-icons/fi";
 import { useState } from "react";
 
 const icons: Record<Topic, { primary: React.ReactNode; secondary: React.ReactNode }> = {
+  "todays-exam": { primary: <FiCalendar size={28} />, secondary: <FiTerminal size={28} /> },
   oop: { primary: <FiCode size={28} />, secondary: <FiGitBranch size={28} /> },
   os: { primary: <FiTerminal size={28} />, secondary: <FiCpu size={28} /> },
   ds: { primary: <FiGitBranch size={28} />, secondary: <FiShare size={28} /> },

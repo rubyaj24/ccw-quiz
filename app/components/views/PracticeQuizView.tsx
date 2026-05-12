@@ -58,6 +58,14 @@ export function PracticeQuizView({
 
   return (
     <section className="noise-surface rounded-xl border border-border bg-card p-6">
+      {selectedTopic === "todays-exam" && (
+        <div className="mb-5 rounded-lg border border-[#a855f7]/30 bg-gradient-to-r from-[#a855f7]/10 to-[#6366f1]/10 p-4 text-center">
+          <p className="text-lg font-bold text-[#a855f7]">📋 Today's Exam</p>
+          <p className="mt-1 text-sm text-muted">
+            A full 50-question mixed-subject exam covering Data Structures, Operating Systems, Computer Organization, Databases &amp; Automata Theory
+          </p>
+        </div>
+      )}
       <div className="mb-4 flex items-center justify-between gap-2 text-sm">
         <div className="flex items-center gap-2">
           <SubjectIcon topic={selectedTopic} />

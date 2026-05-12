@@ -1,6 +1,7 @@
 import type { Topic } from "./quiz-data/types";
 
 export const topicLabels: Record<Topic, string> = {
+	"todays-exam": "Today's Exam",
 	oop: "Object-Oriented Programming",
 	os: "Operating Systems",
 	ds: "Data Structures",

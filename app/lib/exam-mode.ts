@@ -37,7 +37,7 @@ export type ExamResponses = Record<string, number | undefined>;
 
 export type RandomGenerator = () => number;
 
-const ALL_TOPICS: Topic[] = ["oop", "os", "ds", "core", "maths", "vectors", "matrices", "differential", "graphics", "automata", "coa"];
+const ALL_TOPICS: Topic[] = ["todays-exam", "oop", "os", "ds", "core", "maths", "vectors", "matrices", "differential", "graphics", "automata", "coa"];
 
 export const EXAM_DEFAULTS: ExamConfig = {
   totalQuestions: 100,
@@ -55,10 +55,12 @@ export const EXAM_DEFAULTS: ExamConfig = {
     graphics: 0,
     automata: 0,
     coa: 0,
+    "todays-exam": 0,
   },
 };
 
 const emptyTopicRecord = (): Record<Topic, number> => ({
+  "todays-exam": 0,
   oop: 0,
   os: 0,
   ds: 0,
@@ -73,6 +75,7 @@ const emptyTopicRecord = (): Record<Topic, number> => ({
 });
 
 const emptyQuestionArrayRecord = (): Record<Topic, QuizQuestion[]> => ({
+  "todays-exam": [],
   oop: [],
   os: [],
   ds: [],

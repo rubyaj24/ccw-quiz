@@ -89,15 +89,15 @@ export default function Home() {
             <h1 className="text-4xl leading-tight sm:text-6xl font-playfair-display font-bold">
               CCW Quiz Platform
             </h1>
-            <p className="mt-2 max-w-2xl text-base text-muted sm:text-lg font-nunito">
+            {/* <p className="mt-2 max-w-2xl text-base text-muted sm:text-lg font-nunito">
               Practice OOP, Operating Systems, Data Structures, Mathematics, and more.
-            </p>
-            <p className="max-w-2xl text-sm text-muted sm:text-base font-geist-sans font-bold">
+            </p> */}
+            <p className="mt-4 max-w-2xl text-sm text-muted sm:text-base font-geist-sans font-bold">
               New Feature - <span className="text-foreground">Ask Google :)</span>
             </p>
-            <p className="mt-2 text-sm text-muted font-geist-sans">
+            {/* <p className="mt-2 text-sm text-muted font-geist-sans">
               {totalQuestions} curated questions across {Object.keys(topicLabels).length} core domains
-            </p>
+            </p> */}
           </div>
 
           <div

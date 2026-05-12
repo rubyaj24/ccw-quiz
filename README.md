@@ -2,12 +2,12 @@
 
 A modern quiz platform for **Comprehensive Course Work (CCW)** topics — built with Next.js 16, Tailwind CSS v4, and TypeScript.
 
-Practice or take timed exams across 10 core computer science domains (Discrete Mathematics merged into Mathematics) with a noir-themed UI, animated infographics, and server-secured exam scoring.
+Practice or take timed exams across 12 core computer science domains (Discrete Mathematics merged into Mathematics) with a noir-themed UI, animated infographics, and server-secured exam scoring.
 
 ## Features
 
 ### Two Modes
-- **Quiz Mode** — topic-by-topic practice with instant or check-based answer reveal. Browse 10 domains (Discrete Mathematics merged into Mathematics) with gradient-masked thumbnail cards.
+- **Quiz Mode** — topic-by-topic practice with instant or check-based answer reveal. Browse 12 domains (Discrete Mathematics merged into Mathematics) with gradient-masked thumbnail cards.
 - **Exam Mode** — full-length mixed-topic exam with configurable question count (25–100), time limit (30–120 min), and no-repeat cooldown. Server-side sessions keep answer keys hidden until submission.
 
 ### Question Review
@@ -21,11 +21,6 @@ Practice or take timed exams across 10 core computer science domains (Discrete M
 - Exam palette — draggable question slider for navigation between questions
 - Change selections before final submission
 - Topic-wise accuracy breakdown bars on results
-
-### Issue Reporting
-- Raise correctness issues per question from the review UI
-- Prefilled WhatsApp message with question ID, prompt, answers, and issue notes
-- Tracks submitted issues count
 
 ### No-Repeat Cooldown
 - Excludes recently seen questions from exam mode for a configurable window (1h–24h)
@@ -50,20 +45,21 @@ Practice or take timed exams across 10 core computer science domains (Discrete M
 
 ## Domains
 
-11 question banks with curated MCQs (543 questions total):
+12 question banks with curated MCQs (593 questions total):
 
 | Topic | File |
 |-------|------|
-| Object-Oriented Programming | `oop.ts` (50) |
+| Today's Exam | `todays-exam.ts` (50) |
+| Object-Oriented Programming ~~(hidden)~~ | `oop.ts` (50) |
 | Operating Systems | `os.ts` (115) |
 | Data Structures | `ds.ts` (135) |
 | Core CS | `core.ts` (31) |
-| Mathematics *(Discrete Mathematics merged in)* | `maths.ts` (20) |
-| Vectors | `vectors.ts` (10) |
+| Mathematics ~~(hidden)~~ | `maths.ts` (20) |
+| Vectors ~~(hidden)~~ | `vector.ts` (10) |
 | Matrices | `matrices.ts` (10) |
 | Differential Equations | `differential.ts` (10) |
 | Formal Language & Automata Theory | `automata.ts` (70) |
-| Computer Graphics | `graphics.ts` (10) |
+| Computer Graphics ~~(hidden)~~ | `graphics.ts` (10) |
 | Computer Organization & Architecture | `coa.ts` (82) |
 
 ## Project Structure

@@ -1,6 +1,7 @@
 import type { Topic, QuizQuestion } from "./quiz-data/types";
 
 export const topicQuestionCounts: Record<Topic, number> = {
+  "todays-exam": 50,
   oop: 50,
   os: 115,
   ds: 135,
@@ -14,9 +15,10 @@ export const topicQuestionCounts: Record<Topic, number> = {
   coa: 82,
 };
 
-export const totalQuestions = 543;
+export const totalQuestions = 593;
 
 const questionBankLoaders: Record<Topic, () => Promise<QuizQuestion[]>> = {
+  "todays-exam": () => import("./quiz-data/todays-exam").then((m) => m.todaysExamQuestions),
   oop: () => import("./quiz-data/oop").then((m) => m.oopQuestions),
   os: () => import("./quiz-data/os").then((m) => m.osQuestions),
   ds: () => import("./quiz-data/ds").then((m) => m.dsQuestions),
